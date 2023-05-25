@@ -1,0 +1,143 @@
+@import url('https://fonts.googleapis.com/css2?family=Archivo:ital,wght@0,100;0,400;0,700;1,100;1,400;1,700&display=swap');
+
+body {
+    margin: 0;
+    font-family: 'Archivo', sans-serif;
+}
+
+.container {
+    width: 100vw;
+    height: 100vh;
+    background: linear-gradient(180deg, #008648 0%, #004C37 100%, #00693F 100%);
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    vertical-align: center;
+}
+
+.logo {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    vertical-align: center;
+    text-align: center;
+}
+
+img {
+    width: 55%;
+    vertical-align: center;
+    margin: auto;
+}
+
+.login-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    vertical-align: center;
+
+    margin: auto;
+
+    background: #121212;
+    border-radius: 5%;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+.buttons {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    margin-top: 5%;
+}
+
+/*
+.checkbox {
+    display: flex;
+    flex-direction: row;
+    justify-content: left;
+    width: 60%;
+    height: 2em;
+
+    cursor: pointer;
+
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+.checkbox input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    width: 0;
+    height: 0;
+}
+
+.checkmark {
+    position: absolute;
+    height: 0.5em;
+    width: 0.5em;
+    border-radius: 25%;
+    border: 2px solid #00A451;
+    vertical-align: center;
+    justify-self: left;
+}
+
+.checkbox:hover input ~ .checkmark {
+    background-color: #212121;
+}
+
+.checkbox input:checked ~ .checkmark {
+    background-color: #09B835;
+}
+
+.checkbox label {
+    position: relative;
+    left: 1em;
+    color: #ffffff;
+    font-size: 12px;
+}
+*/
+
+
+
+input::placeholder {
+    color: #FFFFFF
+}
+
+@media only screen and (max-device-width: 420px) {
+    .container {
+        flex-direction: column;
+    }    
+
+    * {
+        font-size: 36px;
+    }
+
+    .login-container {
+        width: 80%;
+        height: 40vh;
+        margin: auto
+    }
+
+    input {
+        width: 60%;
+    }
+
+    img {
+        width: 60%;
+        margin-bottom: 3em;
+    }
+}

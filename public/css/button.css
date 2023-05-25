@@ -1,0 +1,68 @@
+button {
+    background: #121212;
+    border: 2px solid #00A451;
+    border-radius: 10px;
+    font-family: inherit;
+    font-size: 1em;
+
+    width: unset;
+    padding: 0.3rem 1em;
+    color: #00A451;
+    margin: 1em;
+    line-height: 1.5em;
+
+    justify-content: center;
+}
+
+button:hover {
+    background-color: #212121;
+}
+
+button:active {
+    background-color: #09B835;
+    border-color: #09B835;
+    color: #121212;
+}
+
+button > i {
+    color: #00A451;
+    font-size: 1.5em;
+}
+
+button:active > i {
+    color: #121212;
+}
+
+button > a {
+    text-decoration: none;
+
+}
+
+
+
+button.short {
+    background: none;
+    border: none;
+    width: 2em;
+    height: 2em;
+    padding: 0;
+    margin: 0;
+    font-size: 1.5em;
+}
+
+button.short > i {
+    margin: auto;
+    padding: 10%;
+}
+
+button:hover.short {
+    /*text-shadow: -3px 0 #fff, 0 3px #fff, 3px 0 #fff, 0 -3px #fff;/**/
+    -webkit-text-stroke-width: 2px;
+    -webkit-text-stroke-color: white;
+}
+
+button:active.short {
+    /*text-shadow: -3px 0 #fff, 0 3px #fff, 3px 0 #fff, 0 -3px #fff;/**/
+    -webkit-text-stroke-width: 2px;
+    -webkit-text-stroke-color: #09B835;
+}

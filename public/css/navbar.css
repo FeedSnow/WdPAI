@@ -1,0 +1,63 @@
+nav {
+    width: 18vw;
+    height: 100%;
+    background: #121212;
+    
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+nav > img {
+    width: 80%;
+    margin: 2em auto;
+}
+
+nav > ul {
+    list-style-type: none;
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    position: relative;
+}
+
+nav > ul > div > li {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+nav > ul > div > li > button {
+    width: 80%;
+    text-align: left;
+}
+
+nav > ul > div > li > button > i {
+    padding: 0.2em;
+}
+
+nav > ul > div > li > button > a {
+    text-decoration: none;
+    display: inline-block;
+    color: inherit;
+    position: relative;
+    vertical-align: text-bottom;
+}
+
+nav > ul > .lower {
+    position:absolute;
+    width: 100%;
+    bottom: 5%;
+}
+
+.fa, .fas, .fa-solid {
+    width: 1em;
+    margin-right: 0.2em;
+}
+
+.fa-brands{
+    width: 1em;
+    margin-left: 0.2em;
+}

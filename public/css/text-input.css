@@ -1,0 +1,19 @@
+input {
+    background: rgba(255, 255, 255, 0.4);
+    border-radius: 25px;
+    border: 3px solid rgba(0,0,0,0);
+    color: #FFFFFF;
+    font-family: inherit;
+
+    width: 88%;
+    height: 2.5em;
+    margin: 1em 0;
+    padding: 0 5% 0 5%;
+
+    transition: 0.3s ease-in-out;
+    outline: none;
+}
+
+input:focus {
+    border: 3px solid #09B835;
+}

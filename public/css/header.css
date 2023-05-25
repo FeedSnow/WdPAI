@@ -1,0 +1,47 @@
+header {
+    width: 82vw;
+    --factor: calc(0.8 * 18vw);
+    height: calc(var(--factor) * calc(394/880) + 4em);
+    background-color: #121212;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+header > .buttons{
+    width: 60%;
+    margin: 0;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+header > .search-bar {
+    width: 40%;
+    padding-left: 3%;
+}
+
+header > .buttons > .left {
+    width: min(20%, 8em);
+    /* margin: auto auto auto 5%; */
+
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+}
+
+header > .buttons > .right {
+    width: min(50%, 23em);
+    margin: auto 5% auto auto;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+header >.buttons > .right > #messages {
+    margin-right: 5px;
+}
