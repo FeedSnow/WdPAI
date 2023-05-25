@@ -24,18 +24,37 @@ button:active {
     color: #121212;
 }
 
-button > i {
+/*button > i {
     color: #00A451;
     font-size: 1.5em;
 }
 
 button:active > i {
     color: #121212;
-}
+}/**/
 
 button > a {
     text-decoration: none;
 
+}
+
+
+
+button > i {
+    color: #121212;
+    font-size: 1.5em;
+    -webkit-text-stroke-width: 1px;
+    -webkit-text-stroke-color: #00A451;
+}
+
+button:hover > i {
+    color: #212121;
+}
+
+button:active > i {
+    color: #09B835;
+    -webkit-text-stroke-width: 1.5px;
+    -webkit-text-stroke-color: #121212;
 }
 
 
@@ -53,16 +72,14 @@ button.short {
 button.short > i {
     margin: auto;
     padding: 10%;
+    -webkit-text-stroke-width: 1px;
 }
 
-button:hover.short {
-    /*text-shadow: -3px 0 #fff, 0 3px #fff, 3px 0 #fff, 0 -3px #fff;/**/
+/*button:hover.short {
     -webkit-text-stroke-width: 2px;
     -webkit-text-stroke-color: white;
-}
+}/**/
 
-button:active.short {
-    /*text-shadow: -3px 0 #fff, 0 3px #fff, 3px 0 #fff, 0 -3px #fff;/**/
-    -webkit-text-stroke-width: 2px;
+button:active.short > i {
     -webkit-text-stroke-color: #09B835;
-}
+}/**/
