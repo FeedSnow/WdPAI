@@ -1,7 +1,14 @@
-header {
-    width: 82vw;
+body {
     --factor: calc(0.8 * 18vw);
-    height: calc(var(--factor) * calc(394/880) + 4em);
+    --header-height: calc(var(--factor) * 197 / 880 + 3.5em)
+}
+
+header {
+    /*width: 82vw;/**/
+    width: 100%;
+    
+    /*height: calc(var(--factor) * calc(394/880) + 4em);/**/
+    height: var(--header-height);
     background-color: #121212;
     display: flex;
     flex-direction: row;

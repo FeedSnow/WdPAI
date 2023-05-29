@@ -1,3 +1,5 @@
+@import url("header.css");
+
 .base-container {
     display: flex;
     align-content: center;
@@ -6,13 +8,39 @@
     background: linear-gradient(180deg, #008648 0%, #004C37 100%, #00693F 100%);
 }
 
-.offer-tile {
+main {
+    height: 100vh;
+    width: 82vw;
+    display: flex;
+    flex-direction: column;
+}
+
+section {
     --size-unit: calc(76vw / 44);
-    height: calv(var(--size-unit) * 11);
-    width: calc(var(--size-unit) * 22);
+    --offer-tile-height: calv(var(--size-unit) * 11);
+    --offer-tile-width: calc(var(--size-unit) * 22);
+
+    display: grid;
+    height: calc(100% - var(--header-height));
+    width: 100%;
+    
+    grid-template-columns: repeat(2, var(--offer-tile-width));
+    grid-gap: 2vw;
+    overflow: auto;
+    padding: 2vw 0;
+    justify-content: center;
+}
+
+.offer-tile {
+    
+    /*height: calv(var(--size-unit) * 11);
+    width: calc(var(--size-unit) * 22);/**/
+
+    height: var(--offer-tile-height);
+    width: var(--offer-tile-width);
     border-radius: var(--size-unit);
 
-    margin: 2em;
+    /*margin: 2em;/**/
 
     /*width: 55em;
     height: 27.5em;
@@ -36,7 +64,7 @@
     border-radius: calc(55em * 3 / 88);
     margin: auto 2.5em;/**/
     
-    border: 2px solid #00a451;
+    border: 3px solid #00a451;
 }
 
 .offer-tile > .offer-info {
