@@ -15,19 +15,28 @@
             <div class="logo">
                 <img src="public/img/logo.svg">
             </div>
-            <form>
+            <form class="login" action="login" method="POST">
+                <div class="messages">
+                    <?php
+                    if(isset($messages)) {
+                        foreach ($messages as $message) {
+                            echo $message;
+                        }
+                    }
+                    ?>
+                </div>
                 <input name="email" type="text" placeholder="adres e-mail">
                 <input name="password" type="password" placeholder="hasło">
-
+                
                 <label class="checkbox-container">Nie wylogowuj mnie
-                    <input type="checkbox">
+                    <input name="dont-logout" type="checkbox">
                     <span class="checkmark"></span>
                 </label>
 
                 
 
                 <div class="buttons">
-                    <button>Zaloguj</button>
+                    <button type="submit">Zaloguj</button>
                     <button>Utwórz konto</button>
                 </div>
             </form>

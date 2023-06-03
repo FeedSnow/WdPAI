@@ -17,7 +17,7 @@ main {
 
 section {
     --size-unit: calc(76vw / 44);
-    --offer-tile-height: calv(var(--size-unit) * 11);
+    --offer-tile-height: calc(var(--size-unit) * 11);
     --offer-tile-width: calc(var(--size-unit) * 22);
 
     display: grid;
