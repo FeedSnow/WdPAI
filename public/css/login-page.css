@@ -13,6 +13,11 @@ form {
     width: 60%;
     height: 60%;
     padding-bottom: 3%;
+    color: #FFFFFF;
+}
+
+.messages {
+    color: #FFFFFF;
 }
 
 button {
