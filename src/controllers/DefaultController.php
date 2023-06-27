@@ -13,6 +13,10 @@ class DefaultController extends AppController {
         $this->render('offers');
     }
 
+    public function create_offer() {
+        $this->render('create-offer');
+    }
+
     public function register() {
         $this->render('register');
     }

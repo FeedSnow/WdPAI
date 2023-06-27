@@ -22,7 +22,7 @@ section {
 
     display: grid;
     height: calc(100% - var(--header-height));
-    width: 100%;
+    width: 82vw;
     
     grid-template-columns: repeat(2, var(--offer-tile-width));
     grid-gap: 2vw;

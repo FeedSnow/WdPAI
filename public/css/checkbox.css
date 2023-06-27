@@ -45,7 +45,7 @@
   .checkbox-container:hover input ~ .checkmark {
     background-color: #212121;
   }
-  
+
   /* When the checkbox is checked, add a blue background */
   .checkbox-container input:checked ~ .checkmark {
     background-color: #121212;

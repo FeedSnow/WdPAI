@@ -94,11 +94,11 @@
 
             <section class="offers">
                 <div class="offer-tile" id="offer-1">
-                    <img src="public/img/czarny-bez.png">
+                    <img src="public/uploads/<?= $offer->getImage() ?>">
                     <div class="offer-info">
                         <div class="offer-main">
-                            <h2>Czarny bez</h2>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua...</p>
+                            <h2><?= $offer->getTitle() ?></h2>
+                            <p><?= $offer->getDescription() ?></p>
                         </div>
 
                         <div class="offer-footer">

@@ -52,12 +52,12 @@ nav > ul > .lower {
     bottom: 5%;
 }
 
-.fa, .fas, .fa-solid {
+nav .fa, nav .fas, nav .fa-solid {
     width: 1em;
     margin-right: 0.2em;
 }
 
-.fa-brands{
+nav .fa-brands{
     width: 1em;
     margin-left: 0.2em;
 }
