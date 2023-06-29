@@ -1,20 +1,5 @@
 @import url("header.css");
 
-.base-container {
-    display: flex;
-    align-content: center;
-    justify-content: flex-start;
-    height: 100vh;
-    background: linear-gradient(180deg, #008648 0%, #004C37 100%, #00693F 100%);
-}
-
-main {
-    height: 100vh;
-    width: 82vw;
-    display: flex;
-    flex-direction: column;
-}
-
 section {
     --size-unit: calc(76vw / 44);
     --offer-tile-height: calc(var(--size-unit) * 11);

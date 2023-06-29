@@ -2,11 +2,13 @@
 
 class Offer
 {
-    public function __construct($title, $description, $image)
+    public function __construct($title, $description, $image, $price, $quantity)
     {
         $this->title = $title;
         $this->description = $description;
         $this->image = $image;
+        $this->price = $price;
+        $this->quantity = $quantity;
     }
 
     public function getTitle() : string
@@ -42,4 +44,26 @@ class Offer
     private $title;
     private $description;
     private $image;
+    private $price;
+    private $quantity;
+
+    public function getPrice() : float
+    {
+        return $this->price;
+    }
+
+    public function setPrice(float $price)
+    {
+        $this->price = $price;
+    }
+
+    public function getQuantity() : int
+    {
+        return $this->quantity;
+    }
+
+    public function setQuantity(int $quantity)
+    {
+        $this->quantity = $quantity;
+    }
 }

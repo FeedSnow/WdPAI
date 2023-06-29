@@ -7,7 +7,10 @@ $path = parse_url($path, PHP_URL_PATH);
 
 Routing::get('', 'DefaultController');
 Routing::get('offers', 'DefaultController');
-Routing::get('register', 'DefaultController');
+Routing::get('contacts', 'DefaultController');
+
+// TODO
+Routing::post('register', 'DefaultController');
 
 Routing::post('login', 'SecurityController');
 Routing::post('create-offer', 'OfferController');

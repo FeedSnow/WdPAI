@@ -117,13 +117,13 @@
 
                     <div class="sub">
                         <div class="price">
-                            <input name="price" type="number" placeholder="cena" required>
+                            <input name="price" type="number" placeholder="cena" step="0.01" min="0" required>
                             <label class="checkbox-container">Do negocjacji
                                 <input name="negotiable" type="checkbox">
                                 <span class="checkmark"></span>
                             </label>
                         </div>
-                        <input name="quantity" type="number" placeholder="ilość" required>
+                        <input name="quantity" type="number" placeholder="ilość" min="0" required>
                     </div>
 
                 </div>

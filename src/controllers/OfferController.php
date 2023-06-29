@@ -19,7 +19,7 @@ class OfferController extends AppController
             move_uploaded_file($_FILES['photo']['tmp_name'],
             dirname(__DIR__).self::UPLOADS_DIRECTORY.$_FILES['photo']['name']);
 
-            $offer = new Offer($_POST['title'], $_POST['desc'], $_FILES['photo']['name']);
+            $offer = new Offer($_POST['title'], $_POST['desc'], $_FILES['photo']['name'], $_POST['price'], $_POST['quantity']);
 
             return $this->render('offers', ["messages" => $this->messages, 'offer' => $offer]);
         }

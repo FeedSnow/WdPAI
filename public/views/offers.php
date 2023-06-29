@@ -5,15 +5,16 @@
     <link rel="stylesheet" type="text/css" href="public/css/button.css">
     <link rel="stylesheet" type="text/css" href="public/css/text-input.css">
     <link rel="stylesheet" type="text/css" href="public/css/offers.css">
-    <link rel="stylesheet" type="text/css" href="public/css/navbar.css">
+    <!-- <link rel="stylesheet" type="text/css" href="public/css/navbar.css"> -->
     <!-- <link rel="stylesheet" type="text/css" href="public/css/header.css"> -->
 
     <script src="https://kit.fontawesome.com/3ca3187568.js" crossorigin="anonymous"></script>
-    <title>Offers</title>
+    <title>Oferty</title>
 </head>
 <body>
     
     <div class="base-container">
+        <!--
         <nav>
             <img src="public/img/logo.svg">
             <ul>
@@ -53,8 +54,11 @@
                 </div>
             </ul>
         </nav>
+        -->
+        <?php include('navbar.php')?>
 
         <main>
+            <!--
             <header>
                 <div class="search-bar">
                     <form>
@@ -91,8 +95,11 @@
                     </div>
                 </div>
             </header>
+            -->
+            <?php include('header.php')?>
 
             <section class="offers">
+                <!--
                 <div class="offer-tile" id="offer-1">
                     <img src="public/uploads/<?= $offer->getImage() ?>">
                     <div class="offer-info">
@@ -102,11 +109,12 @@
                         </div>
 
                         <div class="offer-footer">
-                            <h3>Cena</h3>
+                            <h3><?= $offer->getPrice() ?>zł</h3>
                             <i class="fa-solid fa-heart"></i>
                         </div>
                     </div>
                 </div>
+                -->
                 
                 <div class="offer-tile" id="offer-2">
                     <img src="public/img/czarny-bez.png">
