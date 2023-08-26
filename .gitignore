@@ -2,4 +2,3 @@ public/uploads/
 .idea
 .vscode
 config.php
-docker-compose-pg-only.yml
