@@ -30,6 +30,14 @@ input:hover, textarea:hover {
 
 input:focus, textarea:focus {
     border: 3px solid #09B835;
+}/**/
+
+/*input:invalid, textarea:invalid {
+    border: 3px solid crimson;
+}/**/
+
+.invalid, .invalid:focus, .invalid:hover {
+    border: 3px solid crimson;
 }
 
 input[type="number"] {
