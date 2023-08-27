@@ -6,7 +6,7 @@ section {
     --offer-tile-width: calc(var(--size-unit) * 22);
 
     display: grid;
-    height: calc(100% - var(--header-height));
+    /*height: calc(100% - var(--header-height));/**/
     width: 82vw;
     
     grid-template-columns: repeat(2, var(--offer-tile-width));

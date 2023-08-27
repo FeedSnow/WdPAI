@@ -2,6 +2,7 @@
 
 require_once 'AppController.php';
 require_once __DIR__.'/../models/Offer.php';
+require_once __DIR__.'/../repository/OfferRepository.php';
 
 class OfferController extends AppController
 {
@@ -10,6 +11,13 @@ class OfferController extends AppController
     const UPLOADS_DIRECTORY = "../../public/uploads/";
 
     private $messages = [];
+    private $offerRepository;
+
+    public function __construct()
+    {
+        parent::__construct();
+        $this->offerRepository = new OfferRepository();
+    }
 
     public function create_offer()
     {
@@ -19,12 +27,23 @@ class OfferController extends AppController
             move_uploaded_file($_FILES['photo']['tmp_name'],
             dirname(__DIR__).self::UPLOADS_DIRECTORY.$_FILES['photo']['name']);
 
-            $offer = new Offer($_POST['title'], $_POST['desc'], $_FILES['photo']['name'], $_POST['price'], $_POST['quantity']);
+            $offer = new Offer($_POST['title'], $_POST['desc'], $_FILES['photo']['name'], (int)($_POST['price']*100), $_POST['quantity']);
+            $this->offerRepository->addOffer($offer);
 
-            return $this->render('offers', ["messages" => $this->messages, 'offer' => $offer]);
+            return $this->render('offers',
+                ["messages" => $this->messages,
+                    'offers' => $this->offerRepository->getOffers()
+                ]);
+            //return $this->offers();
         }
 
         $this->render("create-offer", ["messages" => $this->messages]);
+    }
+
+    public function offers() {
+        // TODO display offers.php
+        $offers = $this->offerRepository->getOffers();
+        $this->render('offers', ['offers' => $offers]);
     }
 
     private function validate(array $photo) : bool

@@ -47,12 +47,12 @@ class Offer
     private $price;
     private $quantity;
 
-    public function getPrice() : float
+    public function getPrice() : int
     {
         return $this->price;
     }
 
-    public function setPrice(float $price)
+    public function setPrice(int $price)
     {
         $this->price = $price;
     }

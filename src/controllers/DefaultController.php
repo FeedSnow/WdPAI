@@ -8,11 +8,6 @@ class DefaultController extends AppController {
         $this->render('login', ['message' => "Hello World!"]);
     }
 
-    public function offers() {
-        // TODO display offers.php
-        $this->render('offers');
-    }
-
     public function create_offer() {
         $this->render('create-offer');
     }
