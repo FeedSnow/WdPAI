@@ -9,6 +9,7 @@
     <!-- <link rel="stylesheet" type="text/css" href="public/css/header.css"> -->
 
     <script src="https://kit.fontawesome.com/3ca3187568.js" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="./public/js/search.js" defer></script>
     <title>Oferty</title>
 </head>
 <body>
@@ -19,7 +20,7 @@
 
         <main>
 
-            <?php include('header.php')?>
+            <?php include('header.php')?> <!-- -->
 
             <section class="offers">
                 <?php foreach($offers as $offer): ?>
@@ -45,3 +46,20 @@
     </div>
     
 </body>
+
+<template id="offer-template">
+    <div class="offer-tile" id="">
+        <img src="">
+        <div class="offer-info">
+            <div class="offer-main">
+                <h2>Title</h2>
+                <p>Description</p>
+            </div>
+
+            <div class="offer-footer">
+                <h3>0zł</h3>
+                <i class="fa-solid fa-heart"></i>
+            </div>
+        </div>
+    </div>
+</template>

@@ -5,9 +5,7 @@
 
 <header>
     <div class="search-bar">
-        <form>
-            <input type="text" placeholder="Szukaj ofert">
-        </form>
+        <input type="text" id="search" placeholder="Szukaj ofert">
     </div>
 
     <div class="buttons">

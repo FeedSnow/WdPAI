@@ -14,5 +14,6 @@ Routing::post('register', 'DefaultController');
 
 Routing::post('login', 'SecurityController');
 Routing::post('create-offer', 'OfferController');
+Routing::post('search', 'OfferController');
 
 Routing::run($path);

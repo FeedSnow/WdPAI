@@ -46,6 +46,22 @@ class OfferController extends AppController
         $this->render('offers', ['offers' => $offers]);
     }
 
+    public function search()
+    {
+        $contentType = isset($_SERVER['CONTENT_TYPE']) ? trim($_SERVER['CONTENT_TYPE']) : '';
+
+        if($contentType !== "application/json")
+            return;
+
+        $content = trim(file_get_contents('php://input'));
+        $decoded = json_decode($content, true);
+
+        header('Content-Type: application/json');
+        http_response_code(200);
+
+        echo json_encode($this->offerRepository->getOfferByTitle($decoded['search']));
+    }
+
     private function validate(array $photo) : bool
     {
         if($photo['size'] > self::MAX_FILE_SIZE) {
