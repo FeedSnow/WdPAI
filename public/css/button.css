@@ -18,7 +18,7 @@ button:hover {
     background-color: #212121;
 }
 
-button:active {
+button:active, button.active {
     background-color: #09B835;
     border-color: #09B835;
     color: #121212;
@@ -51,7 +51,7 @@ button:hover > i {
     color: #212121;
 }
 
-button:active > i {
+button:active > i, button.active > i {
     color: #09B835;
     -webkit-text-stroke-width: 1.5px;
     -webkit-text-stroke-color: #121212;
@@ -80,6 +80,6 @@ button.short > i {
     -webkit-text-stroke-color: white;
 }/**/
 
-button:active.short > i {
+button:active.short > i, button.active.short > i {
     -webkit-text-stroke-color: #09B835;
 }/**/
