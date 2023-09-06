@@ -1,6 +1,7 @@
 const search = document.querySelector('input[placeholder="Szukaj ofert"]');
 const offersContainer = document.querySelector('.offers');
 const button = document.querySelector('.fa-pagelines').parentElement;
+const emptyPage = document.querySelector('.empty-page');
 
 button.classList.add('active');
 
@@ -28,6 +29,16 @@ function loadOffers(offers) {
         console.log(offer);
         createOffer(offer);
     });
+    console.log(`count: ${offers.length}`);
+    setEmptyPageInfoActive(offers.length === 0);
+}
+
+function setEmptyPageInfoActive(active) {
+    console.log(`active: ${active}`);
+    if(active)
+        emptyPage.style.display = 'flex';
+    else
+        emptyPage.style.display = 'none';
 }
 
 search.addEventListener('keyup', function(event) {
@@ -35,6 +46,8 @@ search.addEventListener('keyup', function(event) {
         return;
 
     event.preventDefault();
+
+    setEmptyPageInfoActive(false);
 
     const data = {search: this.value};
 

@@ -1,0 +1,28 @@
+@import "variables.css";
+
+.empty-page {
+    position: fixed;
+    display: none;
+    width: 82vw;
+    height: calc(100% - var(--header-height));
+    right: 0;
+    bottom: 0;
+    z-index: 2;
+    justify-content: center;
+    align-items: center;
+}
+
+.empty-page-background {
+    height: var(--offer-tile-height);
+    width: var(--offer-tile-width);
+    display: inherit;
+    overflow: auto;
+
+    background: rgba(18, 18, 18, 0.9);
+    border-radius: 2em;
+}
+
+.empty-page-info {
+    margin: auto;
+    padding: 4% 5%;
+}

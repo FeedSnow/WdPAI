@@ -5,6 +5,7 @@
     <link rel="stylesheet" type="text/css" href="public/css/button.css">
     <link rel="stylesheet" type="text/css" href="public/css/text-input.css">
     <link rel="stylesheet" type="text/css" href="public/css/offers.css">
+    <link rel="stylesheet" type="text/css" href="public/css/empty-page.css">
     <!-- <link rel="stylesheet" type="text/css" href="public/css/navbar.css"> -->
     <!-- <link rel="stylesheet" type="text/css" href="public/css/header.css"> -->
 
@@ -21,6 +22,12 @@
         <main>
 
             <?php include('header.php')?> <!-- -->
+
+            <div class="empty-page">
+                <div class="empty-page-background">
+                    <h1 class="empty-page-info">Brak ofert</h1>
+                </div>
+            </div>
 
             <section class="offers">
                 <?php foreach($offers as $offer): ?>
