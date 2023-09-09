@@ -8,6 +8,7 @@
     <link rel="stylesheet" type="text/css" href="public/css/empty-page.css">
 
     <script src="https://kit.fontawesome.com/3ca3187568.js" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="./public/js/menuButtons.js" defer></script>
     <script type="text/javascript" src="./public/js/search.js" defer></script>
     <title>Kontakty</title>
 </head>

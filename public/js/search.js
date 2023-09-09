@@ -3,17 +3,16 @@ prepare();
 
 const searchBar = document.querySelector('input[placeholder="Szukaj ofert"]');
 const tilesContainer = document.querySelector(`.${pageName}`);
-//const button = document.querySelector('.fa-pagelines').parentElement;
 const emptyPage = document.querySelector('.empty-page');
 
-
+menuButtons[pageName].classList.add('active');
 
 function prepare()
 {
     const words = document.documentURI.split('/');
     pageName = words[words.length-1];
-    let button;
-    switch (pageName){
+    /*let button = menuButtons[pageName];
+    /*switch (pageName){
         case 'offers':
             button = document.querySelector('.fa-pagelines').parentElement;
             break;
@@ -24,7 +23,7 @@ function prepare()
             console.error('Unknown page type. Couldn\'t prepare page.');
             break;
     }
-    button.classList.add('active');
+    button.classList.add('active');*/
 }
 
 function createOffer(offer) {

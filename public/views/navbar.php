@@ -8,19 +8,19 @@
     <ul>
         <div class="upper">
             <li>
-                <button>
+                <button id="offers">
                     <i class="fa-brands fa-pagelines"></i>
                     <a href="#">Oferty</a>
                 </button>
             </li>
             <li>
-                <button>
+                <button id="contacts">
                     <i class="fa-solid fa-users"></i>
                     <a href="#">Kontakty</a>
                 </button>
             </li>
             <li>
-                <button>
+                <button id="history">
                     <i class="fa-solid fa-clock"></i>
                     <a href="#">Historia zakupów</a>
                 </button>
@@ -28,13 +28,13 @@
         </div>
         <div class="lower">
             <li>
-                <button>
+                <button id="settings">
                     <i class="fa-solid fa-gear"></i>
                     <a href="#">Ustawienia</a>
                 </button>
             </li>
             <li>
-                <button>
+                <button id="logout">
                     <i class="fa-solid fa-right-from-bracket"></i>
                     <a href="#">Wyloguj</a>
                 </button>
