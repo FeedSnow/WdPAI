@@ -6,8 +6,19 @@ class Repository
 {
     protected $database;
 
-    public function __construct()
+    private static $instance;
+
+
+    protected function __construct()
     {
-        $this->database = new Database();
+        $this->database = Database::getInstance();
+    }
+    protected function __clone() {}
+    protected function __wakeup() {}
+
+    public static function getInstance() {
+        if(!isset(static::$instance))
+            static::$instance = new static();
+        return static::$instance;
     }
 }

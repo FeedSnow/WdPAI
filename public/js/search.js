@@ -1,9 +1,31 @@
+let pageName;
+prepare();
+
 const search = document.querySelector('input[placeholder="Szukaj ofert"]');
-const offersContainer = document.querySelector('.offers');
-const button = document.querySelector('.fa-pagelines').parentElement;
+const tilesContainer = document.querySelector(`.${pageName}`);
+//const button = document.querySelector('.fa-pagelines').parentElement;
 const emptyPage = document.querySelector('.empty-page');
 
-button.classList.add('active');
+
+
+function prepare()
+{
+    const words = document.documentURI.split('/');
+    pageName = words[words.length-1];
+    let button;
+    switch (pageName){
+        case 'offers':
+            button = document.querySelector('.fa-pagelines').parentElement;
+            break;
+        case 'contacts':
+            button = document.querySelector('.fa-users').parentElement;
+            break;
+        default:
+            console.error('Unknown page type. Couldn\'t prepare page.');
+            break;
+    }
+    button.classList.add('active');
+}
 
 function createOffer(offer) {
     const template = document.querySelector('#offer-template');
@@ -21,16 +43,45 @@ function createOffer(offer) {
     const price = clone.querySelector("h3");
     price.innerHTML = `${offer.offer_price/100}zł`;
 
-    offersContainer.appendChild(clone);
+    tilesContainer.appendChild(clone);
 }
 
-function loadOffers(offers) {
-    offers.forEach(offer => {
-        console.log(offer);
-        createOffer(offer);
+function createContact(contact) {
+    const template = document.querySelector('#contact-template');
+
+    const clone = template.content.cloneNode(true);
+
+    const div = clone.querySelector("div");
+    div.id = `contact-${contact.id}`;
+    const image = clone.querySelector("img");
+    image.src = `public/uploads/${contact.image}`;
+    const name = clone.querySelector("h1");
+    name.innerHTML = `${contact.name} ${contact.surname}`;
+    const num = clone.querySelector("#number");
+    num.innerHTML = `${contact.phone.toString().substring(0, 3)}-${contact.phone.toString().substring(3, 6)}-${contact.phone.toString().substring(6)}`;
+    const email = clone.querySelector("#email");
+    email.innerHTML = contact.email;
+    const locality = clone.querySelector("#locality");
+    locality.innerHTML = contact.locality;
+
+    tilesContainer.appendChild(clone);
+}
+
+function loadTiles(tiles) {
+    tiles.forEach(tile => {
+        console.log(tile);
+        switch (pageName)
+        {
+            case 'offers':
+                createOffer(tile);
+                break;
+            case 'contacts':
+                createContact(tile);
+                break;
+        }
     });
-    console.log(`count: ${offers.length}`);
-    setEmptyPageInfoActive(offers.length === 0);
+    // console.log(`count: ${offers.length}`);
+    setEmptyPageInfoActive(tiles.length === 0);
 }
 
 function setEmptyPageInfoActive(active) {
@@ -51,7 +102,7 @@ search.addEventListener('keyup', function(event) {
 
     const data = {search: this.value};
 
-    fetch('/search', {
+    fetch(`/search-${pageName}`, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
@@ -59,8 +110,8 @@ search.addEventListener('keyup', function(event) {
         body: JSON.stringify(data)
     }).then(function(response) {
         return response.json();
-    }).then(function(offers) {
-        offersContainer.innerHTML = "";
-        loadOffers(offers);
+    }).then(function(tiles) {
+        tilesContainer.innerHTML = "";
+        loadTiles(tiles);
     })
 });

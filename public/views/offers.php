@@ -6,8 +6,6 @@
     <link rel="stylesheet" type="text/css" href="public/css/text-input.css">
     <link rel="stylesheet" type="text/css" href="public/css/offers.css">
     <link rel="stylesheet" type="text/css" href="public/css/empty-page.css">
-    <!-- <link rel="stylesheet" type="text/css" href="public/css/navbar.css"> -->
-    <!-- <link rel="stylesheet" type="text/css" href="public/css/header.css"> -->
 
     <script src="https://kit.fontawesome.com/3ca3187568.js" crossorigin="anonymous"></script>
     <script type="text/javascript" src="./public/js/search.js" defer></script>
@@ -25,7 +23,7 @@
 
             <div class="empty-page">
                 <div class="empty-page-background">
-                    <h1 class="empty-page-info">Brak ofert</h1>
+                    <h1 class="empty-page-info">Brak ofert do wyświetlenia</h1>
                 </div>
             </div>
 

@@ -10,7 +10,7 @@ class SecurityController extends AppController
     {
         //$user = new User('jsnow@pk.edu.pl', 'admin', 'John', 'Snow');
 
-        $userRepository = new UserRepository();
+        $userRepository = UserRepository::getInstance();
 
         if(!$this->isPost())
         {

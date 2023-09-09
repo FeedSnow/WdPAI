@@ -25,6 +25,8 @@
     border-radius: 6vh;
     margin: 4vh 0 0 0;
     padding: 0;
+    object-fit: cover;
+    border: 2px solid #00a451;
 }
 
 .contact-tile .contact-info {
@@ -38,4 +40,8 @@
 
 .contact-tile .contact-info .contact-details {
     align-self: flex-start;
+}
+
+.contact-tile h1 {
+    text-align: center;
 }

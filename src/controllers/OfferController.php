@@ -16,7 +16,7 @@ class OfferController extends AppController
     public function __construct()
     {
         parent::__construct();
-        $this->offerRepository = new OfferRepository();
+        $this->offerRepository = OfferRepository::getInstance();
     }
 
     public function create_offer()
@@ -46,7 +46,7 @@ class OfferController extends AppController
         $this->render('offers', ['offers' => $offers]);
     }
 
-    public function search()
+    public function search_offers()
     {
         $contentType = isset($_SERVER['CONTENT_TYPE']) ? trim($_SERVER['CONTENT_TYPE']) : '';
 
