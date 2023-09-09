@@ -27,7 +27,33 @@ class OfferController extends AppController
             move_uploaded_file($_FILES['photo']['tmp_name'],
             dirname(__DIR__).self::UPLOADS_DIRECTORY.$_FILES['photo']['name']);
 
-            $offer = new Offer($_POST['title'], $_POST['desc'], $_FILES['photo']['name'], (int)($_POST['price']*100), $_POST['quantity']);
+            $address = new Address(
+                $_POST['voivodeship'],
+                $_POST['locality'],
+                $_POST['postcode'],
+                $_POST['street'],
+                $_POST['housenum'],
+                $_POST['flatnum']
+            );
+
+            $delivery = new Delivery(
+                (int)($_POST['cod-courier']*100),
+                (int)($_POST['cod-in-person']*100),
+                (int)($_POST['adv-courier']*100),
+                (int)($_POST['adv-in-person']*100),
+                (int)($_POST['adv-inpost']*100)
+            );
+
+            $offer = new Offer(
+                $_POST['title'],
+                $_POST['desc'],
+                $_FILES['photo']['name'],
+                (int)($_POST['price']*100),
+                $_POST['quantity'],
+                $delivery,
+                $address
+            );
+
             $this->offerRepository->addOffer($offer);
 
             return $this->render('offers',

@@ -93,4 +93,44 @@ class OfferRepository extends Repository
 
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
+
+    private function voivodeshipToCode(string $voivodeship) : string
+    {
+        switch ($voivodeship)
+        {
+            case "Dolnośląskie":
+                return 'DS';
+            case "Kujawsko-Pomorskie":
+                return 'KP';
+            case "Lubelskie":
+                return 'LU';
+            case "Lubuskie":
+                return 'LB';
+            case "Łódzkie":
+                return 'LD';
+            case "Małopolskie":
+                return 'MA';
+            case "Mazowieckie":
+                return 'MZ';
+            case "Opolskie":
+                return 'OP';
+            case "Podkarpackie":
+                return 'PK';
+            case "Podlaskie":
+                return 'PD';
+            case "Pomorskie":
+                return 'PM';
+            case "Śląskie":
+                return 'SL';
+            case"Świętokrzyskie":
+                return 'SK';
+            case "Warmińsko-Mazurskie":
+                return 'WM';
+            case "Wielkopolskie":
+                return 'WP';
+            case"Zachodniopomorskie":
+                return 'ZM';
+        }
+        die('Wrong voivodeship.');
+    }
 }

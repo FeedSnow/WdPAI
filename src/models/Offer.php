@@ -1,14 +1,27 @@
 <?php
 
+require_once __DIR__.'/../models/Delivery.php';
+require_once __DIR__.'/../models/Address.php';
+
 class Offer
 {
-    public function __construct($title, $description, $image, $price, $quantity)
+    private $title;
+    private $description;
+    private $image;
+    private $price;
+    private $quantity;
+    private $delivery;
+    private $address;
+
+    public function __construct($title, $description, $image, $price, $quantity, $delivery = null, $address = null)
     {
         $this->title = $title;
         $this->description = $description;
         $this->image = $image;
         $this->price = $price;
         $this->quantity = $quantity;
+        $this->delivery = $delivery;
+        $this->address = $address;
     }
 
     public function getTitle() : string
@@ -41,12 +54,6 @@ class Offer
         $this->image = $image;
     }
 
-    private $title;
-    private $description;
-    private $image;
-    private $price;
-    private $quantity;
-
     public function getPrice() : int
     {
         return $this->price;
@@ -66,4 +73,26 @@ class Offer
     {
         $this->quantity = $quantity;
     }
+
+    public function getDelivery() : Delivery
+    {
+        return $this->delivery;
+    }
+
+    public function setDelivery(Delivery $delivery)
+    {
+        $this->delivery = $delivery;
+    }
+
+    public function getAddress() : Address
+    {
+        return $this->address;
+    }
+
+    public function setAddress(Address $address)
+    {
+        $this->address = $address;
+    }
+
+
 }
