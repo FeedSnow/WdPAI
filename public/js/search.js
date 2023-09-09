@@ -1,7 +1,7 @@
 let pageName;
 prepare();
 
-const search = document.querySelector('input[placeholder="Szukaj ofert"]');
+const searchBar = document.querySelector('input[placeholder="Szukaj ofert"]');
 const tilesContainer = document.querySelector(`.${pageName}`);
 //const button = document.querySelector('.fa-pagelines').parentElement;
 const emptyPage = document.querySelector('.empty-page');
@@ -92,15 +92,11 @@ function setEmptyPageInfoActive(active) {
         emptyPage.style.display = 'none';
 }
 
-search.addEventListener('keyup', function(event) {
-    if(event.key !== "Enter")
-        return;
-
-    event.preventDefault();
-
+function search()
+{
     setEmptyPageInfoActive(false);
 
-    const data = {search: this.value};
+    const data = {search: searchBar.value};
 
     fetch(`/search-${pageName}`, {
         method: 'POST',
@@ -114,4 +110,13 @@ search.addEventListener('keyup', function(event) {
         tilesContainer.innerHTML = "";
         loadTiles(tiles);
     })
+}
+
+searchBar.addEventListener('keyup', function(event) {
+    if(event.key !== "Enter")
+        return;
+
+    event.preventDefault();
+
+    search();
 });

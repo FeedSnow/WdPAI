@@ -10,7 +10,7 @@
 
     <div class="buttons">
         <div class="left">
-            <button class="short" id="search">
+            <button class="short" id="search" onclick="search()">
                 <i class="fa-solid fa-magnifying-glass"></i>
             </button>
             <button class="short" id="add-offer">
