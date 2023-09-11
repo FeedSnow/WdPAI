@@ -40,8 +40,7 @@ class Database
             );
 
             $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-            if($multi_stmt)
-                $conn->setAttribute(PDO::ATTR_EMULATE_PREPARES, 1);
+            $conn->setAttribute(PDO::ATTR_EMULATE_PREPARES, $multi_stmt ? 1 : 0);
             return $conn;
         } catch(PDOException $e) {
             die("Connection failed: ".$e->getMessage());

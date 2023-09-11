@@ -30,34 +30,6 @@ class ContactRepository extends Repository
         );
     }*/
 
-    public function addOffer(Offer $offer): void
-    {
-        $date = new DateTime();
-        $stmt = $this->database->connect()->prepare('
-            INSERT INTO offers (offer_title,
-                                offer_description,
-                                offer_image,
-                                offer_price,
-                                offer_quantity,
-                                offer_author_id,
-                                offer_created_at,
-                                offer_active)
-            VALUES (?, ?, ?, ?, ?, ?, ?, ?)
-        ');
-
-        $authorId = 1;
-        $stmt->execute([
-            $offer->getTitle(),
-            $offer->getDescription(),
-            $offer->getImage(),
-            $offer->getPrice(),
-            $offer->getQuantity(),
-            $authorId,
-            $date->format('Y-m-d'),
-            true
-        ]);
-    }
-
     public function getContacts(): array
     {
         $result = [];

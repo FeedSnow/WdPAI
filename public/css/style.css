@@ -81,6 +81,10 @@ main {
     flex-direction: column;
 }
 
+button {
+    cursor: pointer;
+}
+
 /*
 .checkbox {
     display: flex;
