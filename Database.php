@@ -29,7 +29,7 @@ class Database
         return static::$instance;
     }
 
-    public function connect()
+    public function connect($multi_stmt = false)
     {
         try {
             $conn = new PDO(
@@ -40,6 +40,8 @@ class Database
             );
 
             $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+            if($multi_stmt)
+                $conn->setAttribute(PDO::ATTR_EMULATE_PREPARES, 1);
             return $conn;
         } catch(PDOException $e) {
             die("Connection failed: ".$e->getMessage());
