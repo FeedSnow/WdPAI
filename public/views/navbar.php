@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <head>
     <link rel="stylesheet" type="text/css" href="public/css/navbar.css">
+    <script type="text/javascript" src="./public/js/redirect.js" defer></script>
 </head>
 
 <nav>
@@ -8,21 +9,21 @@
     <ul>
         <div class="upper">
             <li>
-                <button id="offers">
+                <button id="offers" onclick="redirect('offers')">
                     <i class="fa-brands fa-pagelines"></i>
-                    <a href="#">Oferty</a>
+                    <a>Oferty</a>
                 </button>
             </li>
             <li>
-                <button id="contacts">
+                <button id="contacts" onclick="redirect('contacts')">
                     <i class="fa-solid fa-users"></i>
-                    <a href="#">Kontakty</a>
+                    <a>Kontakty</a>
                 </button>
             </li>
             <li>
                 <button id="history">
                     <i class="fa-solid fa-clock"></i>
-                    <a href="#">Historia zakupów</a>
+                    <a>Historia zakupów</a>
                 </button>
             </li>
         </div>
@@ -30,13 +31,13 @@
             <li>
                 <button id="settings">
                     <i class="fa-solid fa-gear"></i>
-                    <a href="#">Ustawienia</a>
+                    <a>Ustawienia</a>
                 </button>
             </li>
             <li>
                 <button id="logout">
                     <i class="fa-solid fa-right-from-bracket"></i>
-                    <a href="#">Wyloguj</a>
+                    <a>Wyloguj</a>
                 </button>
             </li>
         </div>

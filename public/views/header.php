@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <head>
     <link rel="stylesheet" type="text/css" href="public/css/header.css">
+    <script type="text/javascript" src="./public/js/redirect.js" defer></script>
 </head>
 
 <header>
@@ -13,7 +14,7 @@
             <button class="short" id="search" onclick="search()">
                 <i class="fa-solid fa-magnifying-glass"></i>
             </button>
-            <button class="short" id="add-offer">
+            <button class="short" id="add-offer" onclick="redirect('create-offer')">
                 <i class="fa-solid fa-square-plus"></i>
             </button>
         </div>
