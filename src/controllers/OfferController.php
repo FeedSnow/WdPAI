@@ -26,15 +26,17 @@ class OfferController extends AppController
 
             move_uploaded_file($_FILES['photo']['tmp_name'],
             dirname(__DIR__).self::UPLOADS_DIRECTORY.$_FILES['photo']['name']);
-
-            $address = new Address(
-                $_POST['voivodeship'],
-                $_POST['locality'],
-                $_POST['postcode'],
-                $_POST['street'],
-                $_POST['housenum'],
-                $_POST['flatnum']
-            );
+            $address = null;
+            if($_POST['voivodeship'] !== '')
+                $address = new Address(
+                    $_POST['voivodeship'],
+                    $_POST['locality'],
+                    $_POST['postcode'],
+                    $_POST['street'],
+                    $_POST['housenum'],
+                    $_POST['flatnum']
+                );
+            //echo $address !== null;
 
             $delivery = new Delivery(
                 (int)($_POST['cod-courier']*100),
@@ -56,10 +58,11 @@ class OfferController extends AppController
 
             $this->offerRepository->addOffer($offer);
 
-            return $this->render('offers',
+            return $this->redirect('offers');
+            /*return $this->render('offers',
                 ["messages" => $this->messages,
                     'offers' => $this->offerRepository->getOffers()
-                ]);
+                ]);*/
             //return $this->offers();
         }
 

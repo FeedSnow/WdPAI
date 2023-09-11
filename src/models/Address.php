@@ -69,7 +69,7 @@ class Address
         $this->housenum = $housenum;
     }
 
-    public function getFlatnum() : string
+    public function getFlatnum() : ?string
     {
         return $this->flatnum;
     }

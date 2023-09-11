@@ -31,8 +31,108 @@ class OfferRepository extends Repository
 
     public function addOffer(Offer $offer): void
     {
+        $address_stmt = ' ';
+
+        if($offer->getAddress() !== null) {
+            $flatnum_stmt = '';
+            if($offer->getAddress()->getFlatnum() !== null)
+                $flatnum_stmt = 'address_flatnum = :flatnum';
+            else
+                $flatnum_stmt = 'address_flatnum is null';
+
+            $address_stmt = '
+                select address_id from addresses
+                    where address_voivodeship = :voivodeship
+                        and address_locality = :locality
+                        and address_postcode = :postcode
+                        and address_street = :street
+                        and address_housenum = :housenum
+                        and '.$flatnum_stmt.'
+                    into addr_id;
+                
+                if not FOUND then
+                    insert into addresses
+                        values ((select max(address_id) from addresses)+1,
+                            :voivodeship,
+                            :locality,
+                            :postcode,
+                            :street,
+                            :housenum,
+                            :flatnum)
+                        returning address_id into addr_id;
+                end if;
+            ';
+        }
+        $sql = '
+            begin;
+                do $$
+                declare
+                    addr_id addresses.address_id%type := null;
+                    del_id delivery.delivery_id%type;
+                BEGIN
+                    '.$address_stmt.'
+                    insert into delivery 
+                        values ((select max(delivery_id) from delivery)+1,
+                            :cod_courier,
+                            :cod_inperson,
+                            :adv_courier,
+                            :adv_inperson,
+                            :adv_inpost) returning delivery_id into del_id;
+                    
+                    insert into offers values ((select max(offer_id) from offers)+1,
+                                               :author,
+                                               :title,
+                                               :desc,
+                                               :price,
+                                               :quantity,
+                                               :date,
+                                               true,
+                                               :img,
+                                               del_id,
+                                               addr_id);
+                
+                END $$;
+            commit;
+        ';
+
+        /*if($offer->getAddress()) {
+            $flatnum_stmt = '';
+            if($offer->getAddress()->getFlatnum())
+                $flatnum_stmt = 'address_flatnum = :flatnum';
+            else
+                $flatnum_stmt = 'address_flatnum is null';
+
+            $address_stmt = '
+                select address_id from addresses
+                    where address_voivodeship = ?
+                        and address_locality = ?
+                        and address_postcode = ?
+                        and address_street = ?
+                        and address_housenum = ?
+                        and '.$flatnum_stmt.'
+                    into addr_id;
+                
+                if not FOUND then
+                    insert into addresses
+                        values ((select max(address_id) from addresses)+1,
+                            ?,
+                            ?,
+                            ?,
+                            ?,
+                            ?,
+                            ?)
+                        returning address_id into addr_id;
+                end if;
+            ';
+        }*/
+        /*else {
+            $address_stmt = '
+                addr_id := null;
+            ';
+        }*/
+
         $date = new DateTime();
-        $stmt = $this->database->connect()->prepare('
+        /*$stmt = $this->database->connect()->prepare('
             INSERT INTO offers (offer_title,
                                 offer_description,
                                 offer_image,
@@ -42,10 +142,101 @@ class OfferRepository extends Repository
                                 offer_created_at,
                                 offer_active)
             VALUES (?, ?, ?, ?, ?, ?, ?, ?)
-        ');
+        ');*/
+
+        /*$stmt = $this->database->connect()->prepare('
+            begin;
+                do \$\$
+                declare
+                    addr_id addresses.address_id%type;
+                    del_id delivery.delivery_id%type;
+                BEGIN
+                    ?
+                    
+                    insert into delivery (delivery_cod_courier,
+                        delivery_cod_inperson,
+                        delivery_adv_courier,
+                        delivery_adv_inperson,
+                        delivery_adv_inpost) values (?, ?, ?, ?, ?) returning delivery_id into del_id;
+                    
+                    insert into offers (offer_title,
+                        offer_description,
+                        offer_image,
+                        offer_price,
+                        offer_quantity,
+                        offer_author_id,
+                        offer_created_at,
+                        offer_active,
+                        delivery_id,
+                        address_id) values (?, ?, ?, ?, ?, ?, ?, ?, del_id, addr_id);
+                
+                END \$\$;
+            commit;
+        ');*/
+        /*$stmt = $this->database->connect(true)->prepare('
+            begin;
+                do $$
+                declare
+                    addr_id addresses.address_id%type := null;
+                    del_id delivery.delivery_id%type;
+                BEGIN
+                    :address_stmt
+                    
+                    insert into delivery (delivery_cod_courier,
+                        delivery_cod_inperson,
+                        delivery_adv_courier,
+                        delivery_adv_inperson,
+                        delivery_adv_inpost) values (:cod_courier,
+                            :cod_inperson,
+                            :adv_courier,
+                            :adv_inperson,
+                            :adv_inpost) returning delivery_id into del_id;
+                    
+                    insert into offers (offer_title,
+                        offer_description,
+                        offer_image,
+                        offer_price,
+                        offer_quantity,
+                        offer_author_id,
+                        offer_created_at,
+                        offer_active,
+                        delivery_id,
+                        address_id) values (:title, :desc, :img, :price, :quantity, :author, :date, true, del_id, addr_id);
+                
+                END $$;
+            commit;
+        ');*/
+        $stmt = $this->database->connect(true)->prepare($sql);
 
         $authorId = 1;
-        $stmt->execute([
+        /*$params = [$address_stmt];
+        if($offer->getAddress()) {
+            $params = array_merge($params, [
+                $offer->getAddress()->getVoivodeship(),
+                $offer->getAddress()->getLocality(),
+                $offer->getAddress()->getPostcode(),
+                $offer->getAddress()->getStreet(),
+                $offer->getAddress()->getHousenum()
+            ]);
+            if($offer->getAddress()->getFlatnum()) {
+                $params = array_merge($params, [$offer->getAddress()->getFlatnum()]);
+            }
+            $params = array_merge($params, [
+                $offer->getAddress()->getVoivodeship(),
+                $offer->getAddress()->getLocality(),
+                $offer->getAddress()->getPostcode(),
+                $offer->getAddress()->getStreet(),
+                $offer->getAddress()->getHousenum(),
+                $offer->getAddress()->getFlatnum()
+            ]);
+        }
+
+        $params = array_merge($params, [
+            $offer->getDelivery()->getCodCourier(),
+            $offer->getDelivery()->getCodInPerson(),
+            $offer->getDelivery()->getAdvCourier(),
+            $offer->getDelivery()->getAdvInPerson(),
+            $offer->getDelivery()->getAdvInpost(),
             $offer->getTitle(),
             $offer->getDescription(),
             $offer->getImage(),
@@ -54,7 +245,85 @@ class OfferRepository extends Repository
             $authorId,
             $date->format('Y-m-d'),
             true
-        ]);
+        ]);*/
+
+        /*$stmt = $this->database->connect()->startTransaction();
+        $addressId = null;
+        if($offer->getAddress() !== null) {
+            if ($offer->getAddress()->getFlatnum() !== null)
+                $flatnum_stmt = 'address_flatnum = :flatnum';
+            else
+                $flatnum_stmt = 'address_flatnum is null';
+
+            $address_stmt = '
+                select address_id from addresses
+                    where address_voivodeship = :voivodeship
+                        and address_locality = :locality
+                        and address_postcode = :postcode
+                        and address_street = :street
+                        and address_housenum = :housenum
+                        and ' . $flatnum_stmt . '
+                    into addr_id;';
+            $stmt->prepare($address_stmt);
+            $stmt->bindParam(':voivodeship', $offer->getAddress()->getVoivodeship(), PDO::PARAM_STR);
+            $stmt->bindParam(':locality', $offer->getAddress()->getLocality(), PDO::PARAM_STR);
+            $stmt->bindParam(':postcode', $offer->getAddress()->getPostcode(), PDO::PARAM_STR);
+            $stmt->bindParam(':street', $offer->getAddress()->getStreet(), PDO::PARAM_STR);
+            $stmt->bindParam(':housenum', $offer->getAddress()->getHousenum(), PDO::PARAM_STR);
+            if ($offer->getAddress()->getFlatnum() !== null)
+                $stmt->bindParam(':flatnum', $offer->getAddress()->getFlatnum(), PDO::PARAM_STR);
+            $stmt->exec();
+
+            $stmt->prepare('
+                if not FOUND then
+                    insert into addresses
+                        values ((select max(address_id) from addresses)+1,
+                            :voivodeship,
+                            :locality,
+                            :postcode,
+                            :street,
+                            :housenum,
+                            :flatnum)
+                        returning address_id into addr_id;
+                end if;');
+            $stmt->bindParam(':voivodeship', $offer->getAddress()->getVoivodeship(), PDO::PARAM_STR);
+            $stmt->bindParam(':locality', $offer->getAddress()->getLocality(), PDO::PARAM_STR);
+            $stmt->bindParam(':postcode', $offer->getAddress()->getPostcode(), PDO::PARAM_STR);
+            $stmt->bindParam(':street', $offer->getAddress()->getStreet(), PDO::PARAM_STR);
+            $stmt->bindParam(':housenum', $offer->getAddress()->getHousenum(), PDO::PARAM_STR);
+            $stmt->bindParam(':flatnum', $offer->getAddress()->getFlatnum(), PDO::PARAM_STR);
+            $stmt->exec();
+
+        }
+
+        $stmt->prepare();*/
+
+
+
+        //$stmt->bindParam(':address_stmt', $address_stmt, PDO::PARAM_STR);
+        if($offer->getAddress() !== null) {
+            $stmt->bindParam(':voivodeship', $offer->getAddress()->getVoivodeship(), PDO::PARAM_STR);
+            $stmt->bindParam(':locality', $offer->getAddress()->getLocality(), PDO::PARAM_STR);
+            $stmt->bindParam(':postcode', $offer->getAddress()->getPostcode(), PDO::PARAM_STR);
+            $stmt->bindParam(':street', $offer->getAddress()->getStreet(), PDO::PARAM_STR);
+            $stmt->bindParam(':housenum', $offer->getAddress()->getHousenum(), PDO::PARAM_STR);
+            $stmt->bindParam(':flatnum', $offer->getAddress()->getFlatnum(), PDO::PARAM_STR);
+        }
+        $stmt->bindParam(':cod_courier', $offer->getDelivery()->getCodCourier(), PDO::PARAM_INT);
+        $stmt->bindParam(':cod_inperson', $offer->getDelivery()->getCodInPerson(), PDO::PARAM_INT);
+        $stmt->bindParam(':adv_courier', $offer->getDelivery()->getAdvCourier(), PDO::PARAM_INT);
+        $stmt->bindParam(':adv_inperson', $offer->getDelivery()->getAdvInPerson(), PDO::PARAM_INT);
+        $stmt->bindParam(':adv_inpost', $offer->getDelivery()->getAdvInpost(), PDO::PARAM_INT);
+        $stmt->bindParam(':title', $offer->getTitle(), PDO::PARAM_STR);
+        $stmt->bindParam(':desc', $offer->getDescription(), PDO::PARAM_STR);
+        $stmt->bindParam(':img', $offer->getImage(), PDO::PARAM_STR);
+        $stmt->bindParam(':price', $offer->getPrice(), PDO::PARAM_INT);
+        $stmt->bindParam(':quantity', $offer->getQuantity(), PDO::PARAM_INT);
+        $stmt->bindParam(':author', $authorId, PDO::PARAM_INT);
+        $stmt->bindParam(':date', $date->format('Y-m-d'), PDO::PARAM_STR);
+        //$stmt->bindParam(':active', 1, PDO::PARAM_BOOL);
+
+        $stmt->execute();
     }
 
     public function getOffers(): array

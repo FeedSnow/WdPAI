@@ -9,6 +9,8 @@
     <!-- <link rel="stylesheet" type="text/css" href="public/css/header.css"> -->
 
     <script src="https://kit.fontawesome.com/3ca3187568.js" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="./public/js/menuButtons.js" defer></script>
+    <script type="text/javascript" src="./public/js/create-offer.js" defer></script>
     <title>Create New Offer</title>
 </head>
 <body>
@@ -133,28 +135,28 @@
                     <div class="advance-payment">
                         <h2>Przedpłata</h2>
 
-                        <div class="method" id="ap-courier">
+                        <div class="method" id="adv-courier">
                             <label class="checkbox-container">Kurier
-                                <input name="ap-courier" type="checkbox">
+                                <input name="adv-courier-check" type="checkbox">
                                 <span class="checkmark"></span>
                             </label>
-                            <input type="number" placeholder="cena" value="13.99" step="0.01" min="0">
+                            <input type="number" name="adv-courier" placeholder="cena" value="13.99" step="0.01" min="0">
                         </div>
 
-                        <div class="method" id="ap-inpost">
+                        <div class="method" id="adv-inpost">
                             <label class="checkbox-container">Paczkomaty InPost
-                                <input name="ap-inpost" type="checkbox">
+                                <input name="adv-inpost-check" type="checkbox">
                                 <span class="checkmark"></span>
                             </label>
-                            <input type="number" placeholder="cena" value="9.99" step="0.01" min="0">
+                            <input type="number" name="adv-inpost" placeholder="cena" value="9.99" step="0.01" min="0">
                         </div>
 
-                        <div class="method" id="ap-in-person">
+                        <div class="method" id="adv-in-person">
                             <label class="checkbox-container">Odbiór osobisty
-                                <input name="ap-in-person" type="checkbox">
+                                <input name="adv-in-person-check" type="checkbox">
                                 <span class="checkmark"></span>
                             </label>
-                            <input type="number" placeholder="cena" value="0.00" step="0.01" min="0">
+                            <input type="number" name="adv-in-person" placeholder="cena" value="0.00" step="0.01" min="0">
                         </div>
 
                     </div>
@@ -162,45 +164,45 @@
                     <div class="payment-on-delivery">
                         <h2>Za pobraniem</h2>
 
-                        <div class="method" id="pod-courier">
+                        <div class="method" id="cod-courier">
                             <label class="checkbox-container">Kurier
-                                <input name="pod-courier" type="checkbox">
+                                <input name="cod-courier-check" type="checkbox">
                                 <span class="checkmark"></span>
                             </label>
-                            <input type="number" placeholder="cena" value="16.99" step="0.01" min="0">
+                            <input type="number" name="cod-courier" placeholder="cena" value="16.99" step="0.01" min="0">
                         </div>
 
-                        <div class="method" id="pod-in-person">
+                        <div class="method" id="cod-in-person">
                             <label class="checkbox-container">Odbiór osobisty
-                                <input name="pod-in-person" type="checkbox">
+                                <input name="cod-in-person-check" type="checkbox">
                                 <span class="checkmark"></span>
                             </label>
-                            <input type="number" placeholder="cena" value="0.00" step="0.01" min="0">
+                            <input type="number" name="cod-in-person" placeholder="cena" value="0.00" step="0.01" min="0">
                         </div>
 
                     </div>
                 </div>
 
                 <div class="address">
-                    <h1>Adres dostawy</h1>
-                    <select name="voivodeships" required>
-                        <option hidden>województwo</option>
-                        <option value="Dolnośląskie">Dolnośląskie</option>
-                        <option value="Kujawsko-Pomorskie">Kujawsko-Pomorskie</option>
-                        <option value="Lubelskie">Lubelskie</option>
-                        <option value="Lubuskie">Lubuskie</option>
-                        <option value="Łódzkie">Łódzkie</option>
-                        <option value="Małopolskie">Małopolskie</option>
-                        <option value="Mazowieckie">Mazowieckie</option>
-                        <option value="Opolskie">Opolskie</option>
-                        <option value="Podkarpackie">Podkarpackie</option>
-                        <option value="Podlaskie">Podlaskie</option>
-                        <option value="Pomorskie">Pomorskie</option>
-                        <option value="Śląskie">Śląskie</option>
-                        <option value="Świętokrzyskie">Świętokrzyskie</option>
-                        <option value="Warmińsko-Mazurskie">Warmińsko-Mazurskie</option>
-                        <option value="Wielkopolskie">Wielkopolskie</option>
-                        <option value="Zachodniopomorskie">Zachodniopomorskie</option>
+                    <h1>Adres odbioru</h1>
+                    <select name="voivodeship" required>
+                        <option value="" hidden>województwo</option>
+                        <option value="DS">Dolnośląskie</option>
+                        <option value="KP">Kujawsko-Pomorskie</option>
+                        <option value="LU">Lubelskie</option>
+                        <option value="LB">Lubuskie</option>
+                        <option value="LD">Łódzkie</option>
+                        <option value="MA">Małopolskie</option>
+                        <option value="MZ">Mazowieckie</option>
+                        <option value="OP">Opolskie</option>
+                        <option value="PK">Podkarpackie</option>
+                        <option value="PD">Podlaskie</option>
+                        <option value="PM">Pomorskie</option>
+                        <option value="SL">Śląskie</option>
+                        <option value="SK">Świętokrzyskie</option>
+                        <option value="WM">Warmińsko-Mazurskie</option>
+                        <option value="WP">Wielkopolskie</option>
+                        <option value="ZP">Zachodniopomorskie</option>
                     </select>
 
                     <div class="locality">

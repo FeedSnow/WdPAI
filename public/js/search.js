@@ -5,12 +5,11 @@ const searchBar = document.querySelector('input[placeholder="Szukaj ofert"]');
 const tilesContainer = document.querySelector(`.${pageName}`);
 const emptyPage = document.querySelector('.empty-page');
 
-menuButtons[pageName].classList.add('active');
-
 function prepare()
 {
     const words = document.documentURI.split('/');
     pageName = words[words.length-1];
+    menuButtons[pageName].classList.add('active');
     /*let button = menuButtons[pageName];
     /*switch (pageName){
         case 'offers':

@@ -74,7 +74,7 @@ class Offer
         $this->quantity = $quantity;
     }
 
-    public function getDelivery() : Delivery
+    public function getDelivery() : ?Delivery
     {
         return $this->delivery;
     }
@@ -84,7 +84,7 @@ class Offer
         $this->delivery = $delivery;
     }
 
-    public function getAddress() : Address
+    public function getAddress() : ?Address
     {
         return $this->address;
     }

@@ -20,6 +20,7 @@ section {
     padding: 0 2vw;
     justify-content: center;
     overflow-y: auto;
+    height: calc(100% - var(--header-height));
 }
 
 .create-offer form {
@@ -118,6 +119,11 @@ section {
 
 .create-offer select:focus {
     border: 3px solid #09B835;
+}
+
+.create-offer option {
+    color: #09B835;
+    background: #121212;
 }
 
 .create-offer .locality {
