@@ -39,7 +39,7 @@
                             </div>
 
                             <div class="offer-footer">
-                                <h3><?= (float)$offer->getPrice()/100 ?>zł</h3>
+                                <h3><?= $offer->getPrice() > 0 ? (float)$offer->getPrice()/100 .'zł' : 'Za darmo' ?></h3>
                                 <i class="fa-solid fa-heart"></i>
                             </div>
                         </div>

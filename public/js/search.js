@@ -39,7 +39,7 @@ function createOffer(offer) {
     const description = clone.querySelector("p");
     description.innerHTML = offer.offer_description;
     const price = clone.querySelector("h3");
-    price.innerHTML = `${offer.offer_price/100}zł`;
+    price.innerHTML = offer.offer_price > 0 ? `${offer.offer_price/100}zł` : 'Za darmo';
 
     tilesContainer.appendChild(clone);
 }
