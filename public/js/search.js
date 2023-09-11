@@ -10,19 +10,6 @@ function prepare()
     const words = document.documentURI.split('/');
     pageName = words[words.length-1];
     menuButtons[pageName].classList.add('active');
-    /*let button = menuButtons[pageName];
-    /*switch (pageName){
-        case 'offers':
-            button = document.querySelector('.fa-pagelines').parentElement;
-            break;
-        case 'contacts':
-            button = document.querySelector('.fa-users').parentElement;
-            break;
-        default:
-            console.error('Unknown page type. Couldn\'t prepare page.');
-            break;
-    }
-    button.classList.add('active');*/
 }
 
 function createOffer(offer) {
@@ -78,7 +65,7 @@ function loadTiles(tiles) {
                 break;
         }
     });
-    // console.log(`count: ${offers.length}`);
+
     setEmptyPageInfoActive(tiles.length === 0);
 }
 

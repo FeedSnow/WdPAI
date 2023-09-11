@@ -43,31 +43,6 @@
                     </div>
                 </div>
             <?php endforeach; ?>
-<!--
-            <div class="contact-tile" id="contact-2">
-                <img src="public/img/prof.png">
-                <div class="contact-info">
-                    <h2>Name</h2>
-                    <div class="contact-details">
-                        <p id="number">number</p>
-                        <p id="email">e-mail</p>
-                        <p id="locality">locality</p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="contact-tile" id="contact-3">
-                <img src="public/img/prof.png">
-                <div class="contact-info">
-                    <h2>Name</h2>
-                    <div class="contact-details">
-                        <p id="number">number</p>
-                        <p id="email">e-mail</p>
-                        <p id="locality">locality</p>
-                    </div>
-                </div>
-            </div>
--->
         </section>
     </main>
 

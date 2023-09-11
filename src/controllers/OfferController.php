@@ -58,6 +58,7 @@ class OfferController extends AppController
 
             $this->offerRepository->addOffer($offer);
 
+            //TODO Zrobić coś, żeby $messages[] nie były tracone
             return $this->redirect('offers');
             /*return $this->render('offers',
                 ["messages" => $this->messages,

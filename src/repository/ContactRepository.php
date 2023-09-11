@@ -5,31 +5,6 @@ require_once __DIR__.'/../models/Contact.php';
 
 class ContactRepository extends Repository
 {
-    /*
-    public function getOffer(int $id): ?Contact
-    {
-        $stmt = $this->database->connect()->prepare('
-        SELECT * FROM contacts WHERE user_id_1=:id OR user_id_2=:id
-        ');
-
-        $stmt->bindParam(":id", $id, PDO::PARAM_INT);
-        $stmt->execute();
-
-        $offer = $stmt->fetch(PDO::FETCH_ASSOC);
-
-        if($offer == false)
-            return null;
-
-        return new Contact()
-        (
-            $offer['user_name'].' '.$offer['user_surname'],
-            $offer['offer_description'],
-            $offer['offer_image'],
-            $offer['offer_price'],
-            $offer['offer_quantity']
-        );
-    }*/
-
     public function getContacts(): array
     {
         $result = [];

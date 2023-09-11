@@ -4,9 +4,7 @@
     <link rel="stylesheet" type="text/css" href="public/css/checkbox.css">
     <link rel="stylesheet" type="text/css" href="public/css/button.css">
     <link rel="stylesheet" type="text/css" href="public/css/text-input.css">
-    <link rel="stylesheet" type="text/css" href="public/css/navbar.css">
     <link rel="stylesheet" type="text/css" href="public/css/create-offer.css">
-    <!-- <link rel="stylesheet" type="text/css" href="public/css/header.css"> -->
 
     <script src="https://kit.fontawesome.com/3ca3187568.js" crossorigin="anonymous"></script>
     <script type="text/javascript" src="./public/js/menuButtons.js" defer></script>
@@ -16,83 +14,10 @@
 <body>
 
 <div class="base-container">
-    <nav>
-        <img src="public/img/logo.svg">
-        <ul>
-            <div class="upper">
-                <li>
-                    <button>
-                        <i class="fa-brands fa-pagelines"></i>
-                        <a href="#">Oferty</a>
-                    </button>
-                </li>
-                <li>
-                    <button>
-                        <i class="fa-solid fa-users"></i>
-                        <a href="#">Kontakty</a>
-                    </button>
-                </li>
-                <li>
-                    <button>
-                        <i class="fa-solid fa-clock"></i>
-                        <a href="#">Historia zakupów</a>
-                    </button>
-                </li>
-            </div>
-            <div class="lower">
-                <li>
-                    <button>
-                        <i class="fa-solid fa-gear"></i>
-                        <a href="#">Ustawienia</a>
-                    </button>
-                </li>
-                <li>
-                    <button>
-                        <i class="fa-solid fa-right-from-bracket"></i>
-                        <a href="#">Wyloguj</a>
-                    </button>
-                </li>
-            </div>
-        </ul>
-    </nav>
+    <?php include('navbar.php')?>
 
     <main>
-        <header>
-            <div class="search-bar">
-                <form>
-                    <input type="text" placeholder="Szukaj ofert">
-                </form>
-            </div>
-
-            <div class="buttons">
-                <div class="left">
-                    <button class="short" id="search">
-                        <i class="fa-solid fa-magnifying-glass"></i>
-                    </button>
-                    <button class="short" id="add-offer">
-                        <i class="fa-solid fa-square-plus"></i>
-                    </button>
-                </div>
-
-                <div class="right">
-                    <button class="short" id="messages">
-                        <i class="fa-solid fa-comments"></i>
-                    </button>
-                    <button class="short" id="notifications">
-                        <i class="fa-solid fa-bell"></i>
-                    </button>
-                    <button class="short" id="followed">
-                        <i class="fa-solid fa-heart"></i>
-                    </button>
-                    <button class="short" id="basket">
-                        <i class="fa-solid fa-basket-shopping"></i>
-                    </button>
-                    <button class="short" id="my-account">
-                        <i class="fa-solid fa-circle-user"></i>
-                    </button>
-                </div>
-            </div>
-        </header>
+        <?php include('header.php')?>
 
         <section class="create-offer">
             <form action="create-offer" method="POST" ENCTYPE="multipart/form-data">

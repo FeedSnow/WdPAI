@@ -20,7 +20,7 @@
 
         <main>
 
-            <?php include('header.php')?> <!-- -->
+            <?php include('header.php')?>
 
             <div class="empty-page">
                 <div class="empty-page-background">
