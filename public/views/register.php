@@ -16,7 +16,17 @@
             <div class="logo">
                 <img src="public/img/logo.svg">
             </div>
-            <form>
+            <form class="register" name="register" action="register" onsubmit="return validateForm()" method="POST">
+                <div class="messages">
+                    <?php
+                    if(isset($messages)) {
+                        foreach ($messages as $message) {
+                            echo $message;
+                        }
+                    }
+                    ?>
+                </div>
+
                 <input name="firstname" type="text" placeholder="imię">
                 <input name="lastname" type="text" placeholder="nazwisko">
                 <input name="email" type="text" placeholder="adres e-mail">
@@ -32,7 +42,7 @@
 
                 <div class="buttons">
                     <button>Wróć</button>
-                    <button>Utwórz konto</button>
+                    <button type="submit">Utwórz konto</button>
                 </div>
             </form>
     
