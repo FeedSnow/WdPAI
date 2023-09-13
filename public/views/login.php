@@ -5,7 +5,7 @@
     <link rel="stylesheet" type="text/css" href="public/css/button.css">
     <link rel="stylesheet" type="text/css" href="public/css/text-input.css">
     <link rel="stylesheet" type="text/css" href="public/css/login-page.css">
-    <script type="text/javascript" src="./public/js/validation.js" defer></script>
+    <script type="text/javascript" src="./public/js/loginValidation.js" defer></script>
     <title>LOGIN PAGE</title>
 </head>
 <body>

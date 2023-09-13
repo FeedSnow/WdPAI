@@ -48,7 +48,6 @@ function markValidation(element, condition)
 {
     !condition ? element.classList.add('invalid') : element.classList.remove('invalid');
     return condition;
-    //element.validity = condition;
 }
 
 function validateEmail() {
