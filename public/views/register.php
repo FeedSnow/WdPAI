@@ -27,8 +27,8 @@
                     ?>
                 </div>
 
-                <input name="firstname" type="text" placeholder="imię">
-                <input name="lastname" type="text" placeholder="nazwisko">
+                <input name="name" type="text" placeholder="imię">
+                <input name="surname" type="text" placeholder="nazwisko">
                 <input name="email" type="text" placeholder="adres e-mail">
                 <input name="password" type="password" placeholder="hasło">
                 <input name="confirm-password" type="password" placeholder="potwierdź hasło">

@@ -10,7 +10,7 @@ Routing::get('offers', 'OfferController');
 Routing::get('contacts', 'ContactController');
 
 // TODO
-Routing::post('register', 'DefaultController');
+Routing::post('register', 'SecurityController');
 
 Routing::post('login', 'SecurityController');
 Routing::post('create-offer', 'OfferController');
