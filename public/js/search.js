@@ -4,6 +4,7 @@ prepare();
 const searchBar = document.querySelector('input[placeholder="Szukaj ofert"]');
 const tilesContainer = document.querySelector(`.${pageName}`);
 const emptyPage = document.querySelector('.empty-page');
+search();
 
 function prepare()
 {
