@@ -8,8 +8,9 @@ class User
     private $name;
     private $surname;
     private $img;
+    private $role;
 
-    public function __construct(int $id, string $email, /*string $password,*/ string $name, string $surname, string $img)
+    public function __construct(int $id, string $email, /*string $password,*/ string $name, string $surname, string $img, UserRole $role)
     {
         $this->id = $id;
         $this->email = $email;
@@ -17,6 +18,7 @@ class User
         $this->name = $name;
         $this->surname = $surname;
         $this->img = $img;
+        $this->role = $role;
     }
 
     public function getId() : int
@@ -73,4 +75,15 @@ class User
     {
         $this->img = $img;
     }
+
+    public function getRole() : UserRole
+    {
+        return $this->role;
+    }
+}
+
+enum UserRole
+{
+    case Admin;
+    case User;
 }
