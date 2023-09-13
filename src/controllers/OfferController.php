@@ -50,6 +50,7 @@ class OfferController extends AppController
             );
 
             $offer = new Offer(
+                $_SESSION['user']->getId(),
                 $_POST['title'],
                 $_POST['desc'],
                 $_FILES['photo']['name'],

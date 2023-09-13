@@ -21,6 +21,7 @@ class OfferRepository extends Repository
 
         return new Offer
         (
+            $offer['offer_author_id'],
             $offer['offer_title'],
             $offer['offer_description'],
             $offer['offer_image'],
@@ -139,6 +140,7 @@ class OfferRepository extends Repository
         foreach ($offers as $offer)
         {
             $result[] = new Offer(
+                $offer['offer_author_id'],
                 $offer['offer_title'],
                 $offer['offer_description'],
                 $offer['offer_image'],

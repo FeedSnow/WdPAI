@@ -5,6 +5,7 @@ require_once __DIR__.'/../models/Address.php';
 
 class Offer
 {
+    private $authorId;
     private $title;
     private $description;
     private $image;
@@ -13,8 +14,9 @@ class Offer
     private $delivery;
     private $address;
 
-    public function __construct($title, $description, $image, $price, $quantity, $delivery = null, $address = null)
+    public function __construct($authorId, $title, $description, $image, $price, $quantity, $delivery = null, $address = null)
     {
+        $this->authorId = $authorId;
         $this->title = $title;
         $this->description = $description;
         $this->image = $image;
@@ -94,5 +96,8 @@ class Offer
         $this->address = $address;
     }
 
-
+    public function getAuthorId() : int
+    {
+        return $this->authorId;
+    }
 }
