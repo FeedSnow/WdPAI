@@ -23,7 +23,12 @@ class UserRepository extends Repository
             return null;
         }
 
-        return new User($user['user_id'], $user['user_email'], $user['user_name'], $user['user_surname'], $user['user_image'], $user['user_role']);
+        return new User($user['user_id'],
+            $user['user_email'],
+            $user['user_name'],
+            $user['user_surname'],
+            $user['user_image'],
+            $user['user_role']);
     }
 
     public function userExists(string $email) : bool
