@@ -33,7 +33,8 @@
                 <i class="fa-solid fa-basket-shopping"></i>
             </button>
             <button class="short" id="my-account">
-                <i class="fa-solid fa-circle-user"></i>
+                <img src="public/uploads/<?=$_SESSION['user']->getImage()?>">
+                <!-- <i class="fa-solid fa-circle-user"></i> -->
             </button>
         </div>
     </div>
