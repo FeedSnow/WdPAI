@@ -9,7 +9,7 @@ class ContactRepository extends Repository
     {
         $result = [];
         // TODO $user_id to ma być id użytkownika danej sesji
-        $user_id = 1;
+        $user_id = $_SESSION['user']->getId();
 
         $stmt = $this->database->connect()->prepare('
             select u.user_id as id,
@@ -71,7 +71,7 @@ class ContactRepository extends Repository
     public function getContactByName(string $searchString)
     {
         $searchString = '%'.strtolower($searchString).'%';
-        $user_id = 1;
+        $user_id = $_SESSION['user']->getId();
 
         $stmt = $this->database->connect()->prepare(' 
             (select u.user_id as id,

@@ -5,7 +5,7 @@ require_once __DIR__.'/../models/User.php';
 
 class UserRepository extends Repository
 {
-    public function getUser(string $email): ?User
+    public function getUser(string $email, string $password): ?User
     {
         $stmt = $this->database->connect()->prepare('
         SELECT * FROM public.users u JOIN public.users_details d ON u.user_details_id=d.user_details_id WHERE user_email=:email
@@ -19,7 +19,11 @@ class UserRepository extends Repository
         if($user == false)
             return null;
 
-        return new User($user['user_email'], $user['user_password'], $user['user_name'], $user['user_surname']);
+        if(!password_verify($password, $user['user_password'])) {
+            return null;
+        }
+
+        return new User($user['user_id'], $user['user_email'], $user['user_name'], $user['user_surname'], $user['user_image']);
     }
 
     public function userExists(string $email) : bool

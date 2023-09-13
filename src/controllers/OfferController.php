@@ -21,6 +21,9 @@ class OfferController extends AppController
 
     public function create_offer()
     {
+        if(!isset($_SESSION['user']))
+            $this->redirect('login');
+
         if($this->isPost() && is_uploaded_file($_FILES['photo']['tmp_name']) && $this->validate($_FILES['photo'])) {
             // TODO
 
@@ -71,6 +74,9 @@ class OfferController extends AppController
     }
 
     public function offers() {
+        if(!isset($_SESSION['user']))
+            $this->redirect('login');
+
         // TODO display offers.php
         $offers = $this->offerRepository->getOffers();
         $this->render('offers', ['offers' => $offers]);
@@ -78,6 +84,9 @@ class OfferController extends AppController
 
     public function search_offers()
     {
+        if(!isset($_SESSION['user']))
+            $this->redirect('login');
+
         $contentType = isset($_SERVER['CONTENT_TYPE']) ? trim($_SERVER['CONTENT_TYPE']) : '';
 
         if($contentType !== "application/json")
@@ -94,6 +103,9 @@ class OfferController extends AppController
 
     private function validate(array $photo) : bool
     {
+        if(!isset($_SESSION['user']))
+            $this->redirect('login');
+
         if($photo['size'] > self::MAX_FILE_SIZE) {
             $this->messages[] = 'Przesłany plik jest zbyt duży.';
             return false;

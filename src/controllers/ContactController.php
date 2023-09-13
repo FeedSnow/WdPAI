@@ -20,6 +20,9 @@ class ContactController extends AppController
     }
 
     public function contacts() {
+        if(!isset($_SESSION['user']))
+            $this->redirect('login');
+
         // TODO display offers.php
         $contacts = $this->contactRepository->getContacts();
         $this->render('contacts', ['contacts' => $contacts]);
@@ -27,6 +30,9 @@ class ContactController extends AppController
 
     public function search_contacts()
     {
+        if(!isset($_SESSION['user']))
+            $this->redirect('login');
+
         $contentType = isset($_SERVER['CONTENT_TYPE']) ? trim($_SERVER['CONTENT_TYPE']) : '';
 
         if($contentType !== "application/json")
@@ -39,20 +45,5 @@ class ContactController extends AppController
         http_response_code(200);
 
         echo json_encode($this->contactRepository->getContactByName($decoded['search']));
-    }
-
-    private function validate(array $photo) : bool
-    {
-        if($photo['size'] > self::MAX_FILE_SIZE) {
-            $this->messages[] = 'Przesłany plik jest zbyt duży.';
-            return false;
-        }
-
-        if(!isset($photo['type']) || !in_array($photo['type'], self::SUPPORTED_TYPES)) {
-            $this->messages[] = 'Niewłaściwy format pliku.';
-            return false;
-        }
-
-        return true;
     }
 }

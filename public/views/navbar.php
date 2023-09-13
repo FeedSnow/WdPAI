@@ -35,7 +35,7 @@
                 </button>
             </li>
             <li>
-                <button id="logout">
+                <button id="logout" onclick="redirect('logout')">
                     <i class="fa-solid fa-right-from-bracket"></i>
                     <a>Wyloguj</a>
                 </button>

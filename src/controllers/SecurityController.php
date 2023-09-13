@@ -29,24 +29,33 @@ class SecurityController extends AppController
         $password = $_POST['password'];
         $dont_logout = $_POST['dont-logout'] ?? null;
 
-        $user = $this->userRepository->getUser($email);
+        $user = $this->userRepository->getUser($email, $password);
 
         if(!$user) {
-            return $this->render('login', ['messages' => ['User doesn\'t exist!']]);
+            return $this->render('login', ['messages' => ['Niewłaściwy adres e-mail lub hasło!']]);
         }
 
-        if($user->getEmail() !== $email) {
+        /*if($user->getEmail() !== $email) {
             return $this->render('login', ['messages' => ['Email not found!']]);
         }
 
         if(!password_verify($password, $user->getPassword())) {
             return $this->render('login', ['messages' => ['Wrong password!']]);
-        }
+        }*/
+        $_SESSION['user'] = $user;
 
         //return $this->render('offers');
 
         $url = "http://$_SERVER[HTTP_HOST]";
         header("Location: {$url}/offers");
+    }
+
+    public function logout()
+    {
+        unset($_SESSION['user']);
+
+        $url = "http://$_SERVER[HTTP_HOST]";
+        header("Location: {$url}/login");
     }
 
     public function register()
@@ -70,7 +79,8 @@ class SecurityController extends AppController
             return $this->render('register', ['messages' => $this->messages]);
         }
 
+        $this->messages[] = 'Zarejestrowano pomyślnie.';
         $url = "http://$_SERVER[HTTP_HOST]";
-        header("Location: {$url}/offers");
+        header("Location: {$url}/login");
     }
 }
