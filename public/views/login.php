@@ -5,6 +5,7 @@
     <link rel="stylesheet" type="text/css" href="public/css/button.css">
     <link rel="stylesheet" type="text/css" href="public/css/text-input.css">
     <link rel="stylesheet" type="text/css" href="public/css/login-page.css">
+    <script type="text/javascript" src="./public/js/validation.js" defer></script>
     <title>LOGIN PAGE</title>
 </head>
 <body>
@@ -15,7 +16,7 @@
             <div class="logo">
                 <img src="public/img/logo.svg">
             </div>
-            <form class="login" action="login" method="POST">
+            <form class="login" action="login" onsubmit="return validateForm()" method="POST">
                 <div class="messages">
                     <?php
                     if(isset($messages)) {
@@ -36,8 +37,8 @@
                 
 
                 <div class="buttons">
-                    <button type="submit">Zaloguj</button>
                     <button>Utwórz konto</button>
+                    <button type="submit">Zaloguj</button>
                 </div>
             </form>
     
