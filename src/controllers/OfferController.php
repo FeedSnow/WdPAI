@@ -51,6 +51,7 @@ class OfferController extends AppController
 
             $offer = new Offer(
                 $_SESSION['user']->getId(),
+                $_SESSION['user']->getEmail(),
                 $_POST['title'],
                 $_POST['desc'],
                 $_FILES['photo']['name'],
@@ -74,16 +75,17 @@ class OfferController extends AppController
         $this->render("create-offer", ["messages" => $this->messages]);
     }
 
-    public function offers() {
+    public function offers($option = null) {
         if(!isset($_SESSION['user']))
             $this->redirect('login');
 
         // TODO display offers.php
-        $offers = $this->offerRepository->getOffers();
-        $this->render('offers', ['offers' => $offers]);
+        //$offers = $this->offerRepository->getOffers();
+        //$this->render('offers', ['offers' => $offers]);
+        $this->render('offers');
     }
 
-    public function search_offers()
+    public function search_offers($option = null)
     {
         if(!isset($_SESSION['user']))
             $this->redirect('login');
@@ -99,7 +101,8 @@ class OfferController extends AppController
         header('Content-Type: application/json');
         http_response_code(200);
 
-        echo json_encode($this->offerRepository->getOfferByTitle($decoded['search']));
+        $followed = $option === 'followed';
+        echo json_encode($this->offerRepository->getOfferByTitle($decoded['search'], $followed));
     }
 
     private function validate(array $photo) : bool

@@ -8,7 +8,7 @@ class OfferRepository extends Repository
     public function getOffer(int $id): ?Offer
     {
         $stmt = $this->database->connect()->prepare('
-        SELECT * FROM offers WHERE offer_id=:id
+        SELECT * FROM offers o join users u on o.offer_author_id = u.user_id WHERE offer_id=:id
         ');
 
         $stmt->bindParam(":id", $id, PDO::PARAM_INT);
@@ -22,6 +22,7 @@ class OfferRepository extends Repository
         return new Offer
         (
             $offer['offer_author_id'],
+            $offer['user_email'],
             $offer['offer_title'],
             $offer['offer_description'],
             $offer['offer_image'],
@@ -132,7 +133,7 @@ class OfferRepository extends Repository
         $result = [];
 
         $stmt = $this->database->connect()->prepare('
-            SELECT * FROM offers;
+            SELECT * FROM offers join users u on u.user_id = offers.offer_author_id;
         ');
         $stmt->execute();
         $offers = $stmt->fetchAll(PDO::FETCH_ASSOC);
@@ -141,6 +142,7 @@ class OfferRepository extends Repository
         {
             $result[] = new Offer(
                 $offer['offer_author_id'],
+                $offer['user_email'],
                 $offer['offer_title'],
                 $offer['offer_description'],
                 $offer['offer_image'],
@@ -152,12 +154,12 @@ class OfferRepository extends Repository
         return $result;
     }
 
-    public function getOfferByTitle(string $searchString)
+    public function getOfferByTitle(string $searchString, bool $followed = false)
     {
         $searchString = '%'.strtolower($searchString).'%';
 
         $stmt = $this->database->connect()->prepare('
-            SELECT * FROM offers WHERE LOWER(offer_title) LIKE :search OR LOWER(offer_description) LIKE :search
+            SELECT * FROM offers join users u on u.user_id = offers.offer_author_id WHERE LOWER(offer_title) LIKE :search OR LOWER(offer_description) LIKE :search
         ');
         $stmt->bindParam(':search', $searchString, PDO::PARAM_STR);
         $stmt->execute();

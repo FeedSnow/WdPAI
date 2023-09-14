@@ -68,9 +68,19 @@ section {
 
 .offer-tile > .offer-info > .offer-footer {
     display: flex;
-    flex-direction: row;
-    align-items: center;
+    flex-direction: column;
+    align-items: flex-start;
     justify-content: space-between;
+}
+
+.offer-footer p {
+    margin-bottom: 0;
+    margin-top: 0.5em;
+}
+
+.offer-footer h3 {
+    margin-bottom: 1em;
+    margin-top: 0.25em;
 }
 
 .offer-tile i {
@@ -102,6 +112,7 @@ section {
 
 .offer-tile p {
     font-size: calc(var(--size-unit) * 0.66);
+    overflow-y: auto;
 }
 
 .offer-tile h3 {

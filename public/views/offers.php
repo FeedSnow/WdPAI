@@ -59,12 +59,13 @@
         <div class="offer-info">
             <div class="offer-main">
                 <h2>Title</h2>
-                <p>Description</p>
+                <p class="desc">Description</p>
             </div>
 
             <div class="offer-footer">
+                <p class="email">Email</p>
                 <h3>0zł</h3>
-                <i class="fa-solid fa-heart"></i>
+                <!-- <i class="fa-solid fa-heart"></i> -->
             </div>
         </div>
     </div>

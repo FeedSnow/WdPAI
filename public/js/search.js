@@ -24,8 +24,10 @@ function createOffer(offer) {
     image.src = `public/uploads/${offer.offer_image}`;
     const title = clone.querySelector("h2");
     title.innerHTML = offer.offer_title;
-    const description = clone.querySelector("p");
+    const description = clone.querySelector("p.desc");
     description.innerHTML = offer.offer_description;
+    const email = clone.querySelector("p.email");
+    email.innerHTML = offer.user_email;
     const price = clone.querySelector("h3");
     price.innerHTML = offer.offer_price > 0 ? `${offer.offer_price/100}zł` : 'Za darmo';
 
