@@ -13,6 +13,7 @@
     <title>Oferty</title>
 </head>
 <body>
+<?php include('session-data.php')?>
     
     <div class="base-container">
 
@@ -60,7 +61,7 @@
             <div class="offer-main">
                 <div class="offer-top">
                     <h2>Title</h2>
-                    <button class="micro" id="delete-offer">
+                    <button class="micro" id="delete-offer" onclick="deleteOffer(this)">
                         <i class="fa-solid fa-circle-minus"></i>
                     </button>
                 </div>

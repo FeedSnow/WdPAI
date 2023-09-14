@@ -8,7 +8,7 @@ class OfferRepository extends Repository
     public function getOffer(int $id): ?Offer
     {
         $stmt = $this->database->connect()->prepare('
-        SELECT * FROM offers o join users u on o.offer_author_id = u.user_id WHERE offer_id=:id
+        SELECT * FROM offers o join users u on o.offer_author_id = u.user_id WHERE offer_id=:id and offer_id > 0;
         ');
 
         $stmt->bindParam(":id", $id, PDO::PARAM_INT);
@@ -133,7 +133,7 @@ class OfferRepository extends Repository
         $result = [];
 
         $stmt = $this->database->connect()->prepare('
-            SELECT * FROM offers join users u on u.user_id = offers.offer_author_id;
+            SELECT * FROM offers join users u on u.user_id = offers.offer_author_id where offer_id > 0;
         ');
         $stmt->execute();
         $offers = $stmt->fetchAll(PDO::FETCH_ASSOC);
@@ -159,12 +159,31 @@ class OfferRepository extends Repository
         $searchString = '%'.strtolower($searchString).'%';
 
         $stmt = $this->database->connect()->prepare('
-            SELECT * FROM offers join users u on u.user_id = offers.offer_author_id WHERE LOWER(offer_title) LIKE :search OR LOWER(offer_description) LIKE :search
+            SELECT * FROM offers join users u on u.user_id = offers.offer_author_id WHERE (LOWER(offer_title) LIKE :search OR LOWER(offer_description) LIKE :search) and offer_id > 0;
         ');
         $stmt->bindParam(':search', $searchString, PDO::PARAM_STR);
         $stmt->execute();
 
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
+
+    public function deleteOffer(int $id)
+    {
+        $sql = '
+        select * from users_details;
+        begin;
+            do $$
+            declare 
+                del_id int;
+            begin
+                delete from offers where offer_id = :id returning delivery_id  into del_id;
+                delete from delivery where delivery_id = del_id;
+            end $$;
+        commit;
+        ';
+        $stmt = $this->database->connect(true)->prepare($sql);
+        $stmt->bindParam(':id', $id, PDO::PARAM_INT);
+        return $stmt->execute();
     }
 
     private function voivodeshipToCode(string $voivodeship) : string

@@ -10,7 +10,8 @@ class Delivery
 
     public function __construct($codCourier = null, $codInPerson = null, $advCourier = null, $advInPerson = null, $advInpost = null)
     {
-        if(!$codCourier && !$codInPerson && !$advCourier && !$advInPerson && !$advInpost)
+        if($codCourier === null && $codInPerson === null && $advCourier === null && $advInPerson === null && $advInpost === null)
+        //if(!($codCourier >= 0 || $codInPerson >= 0 || $advCourier >= 0 || $advInPerson >= 0 || $advInpost >= 0))
             die('There must be at least one mode of delivery.');
         $this->codCourier = $codCourier;
         $this->codInPerson = $codInPerson;

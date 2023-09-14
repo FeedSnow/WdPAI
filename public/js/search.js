@@ -4,6 +4,10 @@ prepare();
 const searchBar = document.querySelector('input[placeholder="Szukaj ofert"]');
 const tilesContainer = document.querySelector(`.${pageName}`);
 const emptyPage = document.querySelector('.empty-page');
+const userId = document.querySelector('.session-data').querySelector('.userId').innerHTML;
+const userRoleValue = document.querySelector('.session-data').querySelector('.userRoleValue').innerHTML;
+console.log(`User ID: ${userId}`);
+console.log(`User Role: ${userRoleValue}`);
 search();
 
 function prepare()
@@ -18,8 +22,14 @@ function createOffer(offer) {
 
     const clone = template.content.cloneNode(true);
 
+    const deleteButton = clone.querySelector("#delete-offer");
+    if(userRoleValue >= 2 || offer.offer_author_id == userId)
+        deleteButton.style.display = 'block';
+    else
+        deleteButton.style.display = 'none';
+
     const div = clone.querySelector("div");
-    div.id = `offer-${offer.offer_id}`;
+    div.id = offer.offer_id;
     const image = clone.querySelector("img");
     image.src = `public/uploads/${offer.offer_image}`;
     const title = clone.querySelector("h2");
@@ -57,7 +67,7 @@ function createContact(contact) {
 
 function loadTiles(tiles) {
     tiles.forEach(tile => {
-        console.log(tile);
+        //console.log(tile);
         switch (pageName)
         {
             case 'offers':
@@ -73,7 +83,7 @@ function loadTiles(tiles) {
 }
 
 function setEmptyPageInfoActive(active) {
-    console.log(`active: ${active}`);
+    //console.log(`active: ${active}`);
     if(active)
         emptyPage.style.display = 'flex';
     else
@@ -98,6 +108,22 @@ function search()
         tilesContainer.innerHTML = "";
         loadTiles(tiles);
     })
+}
+
+function deleteOffer(button)
+{
+    button.style.display =  'none';
+    const data = {id: button.parentElement.parentElement.parentElement.parentElement.id};
+    let succeded;
+    fetch('/delete-offer', {
+        method: 'POST',
+        body: JSON.stringify(data)
+    }).then(function(response) {
+        return response.json();
+    }).then(x => succeded = x);
+    //if(!succeded)
+        //button.style.display = 'block';
+    search();
 }
 
 searchBar.addEventListener('keyup', function(event) {

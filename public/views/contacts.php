@@ -13,6 +13,7 @@
     <title>Kontakty</title>
 </head>
 <body>
+<?php include('session-data.php')?>
 
 <div class="base-container">
     <?php include('navbar.php')?>

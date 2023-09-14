@@ -39,8 +39,7 @@ class OfferController extends AppController
                     $_POST['housenum'],
                     $_POST['flatnum']
                 );
-            //echo $address !== null;
-
+            
             $delivery = new Delivery(
                 $_POST['cod-courier'] !== "" ? (int)($_POST['cod-courier']*100) : null,
                 $_POST['cod-in-person'] !== "" ? (int)($_POST['cod-in-person']*100) : null,
@@ -75,7 +74,7 @@ class OfferController extends AppController
         $this->render("create-offer", ["messages" => $this->messages]);
     }
 
-    public function offers($option = null) {
+    public function offers() {
         if(!isset($_SESSION['user']))
             $this->redirect('login');
 
@@ -85,7 +84,7 @@ class OfferController extends AppController
         $this->render('offers');
     }
 
-    public function search_offers($option = null)
+    public function search_offers()
     {
         if(!isset($_SESSION['user']))
             $this->redirect('login');
@@ -101,8 +100,20 @@ class OfferController extends AppController
         header('Content-Type: application/json');
         http_response_code(200);
 
-        $followed = $option === 'followed';
-        echo json_encode($this->offerRepository->getOfferByTitle($decoded['search'], $followed));
+        echo json_encode($this->offerRepository->getOfferByTitle($decoded['search']));
+    }
+
+    public function delete_offer()
+    {
+        if(!isset($_SESSION['user']))
+            $this->redirect('login');
+
+        $content = trim(file_get_contents('php://input'));
+        $decoded = json_decode($content, true);
+
+        http_response_code(200);
+
+        echo json_encode($this->offerRepository->deleteOffer($decoded['id']));
     }
 
     private function validate(array $photo) : bool
