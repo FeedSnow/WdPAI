@@ -46,4 +46,19 @@ class ContactController extends AppController
 
         echo json_encode($this->contactRepository->getContactByName($decoded['search']));
     }
+
+    public function add_contact()
+    {
+        if(!isset($_SESSION['user']))
+            $this->redirect('login');
+
+        //echo json_encode(false);
+
+        $content = trim(file_get_contents('php://input'));
+        $decoded = json_decode($content, true);
+
+        http_response_code(200);
+
+        echo json_encode($this->contactRepository->addContact($_SESSION['user']->getId(), $decoded['email']));
+    }
 }

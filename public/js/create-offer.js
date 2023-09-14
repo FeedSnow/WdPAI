@@ -22,14 +22,11 @@ const inputs = {
 
 prepare();
 
-console.log(inputs);
-
 function prepare() {
-    //menuButtons['create-offer'].classList.add('active');
     document.querySelector('.search-bar').style.display = 'none';
     document.querySelector('.left').style.display = 'none';
     document.querySelector('header').style.flexDirection = 'row-reverse';
-    //console.log(required);
+
     required.forEach(r => {
         if(!r.classList.contains('required')) r.classList.add('required');
         r.removeAttribute('required')});
@@ -39,13 +36,11 @@ function prepare() {
 function validateForm()
 {
     let valid = true;
-    console.log('Validating');
     document.querySelectorAll('.required').forEach(x => {
         valid = valid && markValidation(x, !isEmpty(x));
         if(isEmpty(x))
             x.value = null;
     });
-    console.log(valid);
     return valid;
 }
 
@@ -68,11 +63,6 @@ function updateAddressRequirement()
         required ? x.classList.add('required') : x.classList.remove('required');
         markValidation(x, !required);
     });
-    /*inputs['voivodeship'].classList.add('required');
-    inputs['locality'].classList.add('required');
-    inputs['postcode'].classList.add('required');
-    inputs['street'].classList.add('required');
-    inputs['housenum'].classList.add('required');*/
 }
 
 inputs['adv-in-person'].addEventListener('keyup', updateAddressRequirement);

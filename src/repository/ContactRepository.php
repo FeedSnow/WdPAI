@@ -8,7 +8,6 @@ class ContactRepository extends Repository
     public function getContacts(): array
     {
         $result = [];
-        // TODO $user_id to ma być id użytkownika danej sesji
         $user_id = $_SESSION['user']->getId();
 
         $stmt = $this->database->connect()->prepare('
@@ -16,10 +15,8 @@ class ContactRepository extends Repository
                user_name as name,
                user_surname as surname,
                user_email as email,
-               user_phone as phone,
                user_image as image, 
-               address_locality as locality,
-               contact_status as status
+               address_locality as locality
             from contacts c
                 join users u
                     on c.user_id_1 = u.user_id
@@ -35,10 +32,8 @@ class ContactRepository extends Repository
                    user_name as name,
                    user_surname as surname,
                    user_email as email,
-                   user_phone as phone,
                    user_image as image, 
-                   address_locality as locality,
-                   contact_status as status
+                   address_locality as locality
             from contacts c
                 join users u
                     on c.user_id_2 = u.user_id
@@ -58,7 +53,7 @@ class ContactRepository extends Repository
         {
             $result[] = new Contact(
                 $contact['name'].' '.$contact['surname'],
-                $contact['phone'],
+                '000000000',
                 $contact['email'],
                 $contact['locality'],
                 $contact['image']
@@ -78,10 +73,8 @@ class ContactRepository extends Repository
                     user_name as name,
                     user_surname as surname,
                     user_email as email,
-                    user_phone as phone,
                     user_image as image,
-                    address_locality as locality,
-                    contact_status as status
+                    address_locality as locality
                 from contacts c
                     join users u
                         on c.user_id_1 = u.user_id
@@ -97,10 +90,8 @@ class ContactRepository extends Repository
                     user_name as name,
                     user_surname as surname,
                     user_email as email,
-                    user_phone as phone,
                     user_image as image,
-                    address_locality as locality,
-                    contact_status as status
+                    address_locality as locality
                 from contacts c
                     join users u
                         on c.user_id_2 = u.user_id
@@ -116,10 +107,8 @@ class ContactRepository extends Repository
                     user_name as name,
                     user_surname as surname,
                     user_email as email,
-                    user_phone as phone,
                     user_image as image,
-                    address_locality as locality,
-                    contact_status as status
+                    address_locality as locality
                 from contacts c
                     join users u
                         on c.user_id_2 = u.user_id
@@ -140,10 +129,8 @@ class ContactRepository extends Repository
                     user_name as name,
                     user_surname as surname,
                     user_email as email,
-                    user_phone as phone,
                     user_image as image,
-                    address_locality as locality,
-                    contact_status as status
+                    address_locality as locality
                 from contacts c
                     join users u
                         on c.user_id_1 = u.user_id
@@ -165,5 +152,28 @@ class ContactRepository extends Repository
         $stmt->execute();
 
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
+
+    public function addContact(int $id, string $email)
+    {
+        $sql = 'begin;
+            do $$
+                declare
+                    u_id int;
+                    tmp contacts%rowtype;
+                begin
+                    select user_id from users where user_email = :email into u_id;
+                    select * from contacts where (user_id_2 = u_id and user_id_1 = :id) or (user_id_1 = u_id and user_id_2 = :id) into tmp;
+                    if not FOUND then
+                        insert into contacts(user_id_1, user_id_2)  values (:id, u_id);
+                    end if;
+            end $$;
+            commit;';
+
+        $stmt = $this->database->connect(true)->prepare($sql);
+        $stmt->bindParam(':id', $id, PDO::PARAM_INT);
+        $stmt->bindParam(':email', $email, PDO::PARAM_STR);
+
+        return $stmt->execute();
     }
 }

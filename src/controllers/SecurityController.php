@@ -18,8 +18,6 @@ class SecurityController extends AppController
 
     public function login()
     {
-        //$user = new User('jsnow@pk.edu.pl', 'admin', 'John', 'Snow');
-
         if(!$this->isPost())
         {
             return $this->render('login');
@@ -35,13 +33,6 @@ class SecurityController extends AppController
             return $this->render('login', ['messages' => ['Niewłaściwy adres e-mail lub hasło!']]);
         }
 
-        /*if($user->getEmail() !== $email) {
-            return $this->render('login', ['messages' => ['Email not found!']]);
-        }
-
-        if(!password_verify($password, $user->getPassword())) {
-            return $this->render('login', ['messages' => ['Wrong password!']]);
-        }*/
         $_SESSION['user'] = $user;
 
         //return $this->render('offers');

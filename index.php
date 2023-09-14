@@ -17,6 +17,7 @@ Routing::post('create-offer', 'OfferController');
 Routing::post('search-offers', 'OfferController');
 Routing::post('search-contacts', 'ContactController');
 Routing::post('delete-offer', 'OfferController');
+Routing::post('add-contact', 'ContactController');
 
 session_start();
 

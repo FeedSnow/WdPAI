@@ -62,13 +62,7 @@ class OfferController extends AppController
 
             $this->offerRepository->addOffer($offer);
 
-            //TODO Zrobić coś, żeby $messages[] nie były tracone
             return $this->redirect('offers');
-            /*return $this->render('offers',
-                ["messages" => $this->messages,
-                    'offers' => $this->offerRepository->getOffers()
-                ]);*/
-            //return $this->offers();
         }
 
         $this->render("create-offer", ["messages" => $this->messages]);
@@ -78,9 +72,6 @@ class OfferController extends AppController
         if(!isset($_SESSION['user']))
             $this->redirect('login');
 
-        // TODO display offers.php
-        //$offers = $this->offerRepository->getOffers();
-        //$this->render('offers', ['offers' => $offers]);
         $this->render('offers');
     }
 

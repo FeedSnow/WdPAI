@@ -7,16 +7,4 @@ class DefaultController extends AppController {
         // TODO display login.php
         $this->render('login', ['message' => "Hello World!"]);
     }
-
-    public function create_offer() {
-        $this->render('create-offer');
-    }
-
-    public function contacts() {
-        $this->render('contacts');
-    }
-
-    public function register() {
-        $this->render('register');
-    }
 }

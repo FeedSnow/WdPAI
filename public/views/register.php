@@ -34,13 +34,6 @@
                 <input name="email" type="text" placeholder="adres e-mail">
                 <input name="password" type="password" placeholder="hasło">
                 <input name="confirm-password" type="password" placeholder="potwierdź hasło">
-<!--
-                <label class="checkbox-container">Akceptuję regulamin serwisu Seedlings
-                    <input type="checkbox">
-                    <span class="checkmark"></span>
-                </label>
--->
-                
 
                 <div class="buttons">
                     <button onclick="redirect('login')">Wróć</button>

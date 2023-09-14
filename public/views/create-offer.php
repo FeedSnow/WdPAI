@@ -46,10 +46,6 @@
                     <div class="sub">
                         <div class="price">
                             <input name="price" id="price" type="number" placeholder="cena" step="0.01" min="0" required>
-                            <!-- <label class="checkbox-container">Do negocjacji
-                                <input name="negotiable" type="checkbox">
-                                <span class="checkmark"></span>
-                            </label> -->
                         </div>
                         <input name="quantity" id="quantity" type="number" placeholder="ilość" min="0" required>
                     </div>
@@ -128,16 +124,7 @@
                         <input name="flatnum" id="flatnum" type="text" placeholder="numer mieszkania">
                     </div>
                 </div>
-<!--
-                <div class="contact-details">
-                    <h1>Dane kontaktowe</h1>
-                    <p>(Opcjonalne) Podaj, jeśli chcesz, aby kupujący mógł się z Tobą bezpośrednio skontaktować.</p>
-                    <input name="telnum" id="phone" type="tel" placeholder="numer telefonu">
-                    <input name="email" id="email" type="email" placeholder="adres e-mail">
-                </div>
--->
                 <div class="buttons">
-                    <!-- <button onclick="history.back()">Anuluj</button> -->
                     <button type="submit">Utwórz ofertę</button>
                 </div>
             </form>

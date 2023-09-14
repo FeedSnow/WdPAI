@@ -1,7 +1,7 @@
 let pageName;
 prepare();
 
-const searchBar = document.querySelector('input[placeholder="Szukaj ofert"]');
+const searchBar = document.querySelector('input#search');
 const tilesContainer = document.querySelector(`.${pageName}`);
 const emptyPage = document.querySelector('.empty-page');
 const userId = document.querySelector('.session-data').querySelector('.userId').innerHTML;
@@ -67,7 +67,7 @@ function createContact(contact) {
 
 function loadTiles(tiles) {
     tiles.forEach(tile => {
-        //console.log(tile);
+        console.log(tile);
         switch (pageName)
         {
             case 'offers':
@@ -114,16 +114,29 @@ function deleteOffer(button)
 {
     button.style.display =  'none';
     const data = {id: button.parentElement.parentElement.parentElement.parentElement.id};
-    let succeded;
+    let succeeded;
     fetch('/delete-offer', {
         method: 'POST',
         body: JSON.stringify(data)
     }).then(function(response) {
         return response.json();
-    }).then(x => succeded = x);
-    //if(!succeded)
-        //button.style.display = 'block';
+    }).then(x => succeeded = x);
     search();
+}
+
+function addContact(email)
+{
+    console.log(email.innerHTML);
+    const data = {email: email.innerHTML };
+    console.log(JSON.stringify(data));
+    let succeeded;
+    fetch('/add-contact', {
+        method: 'POST',
+        body: JSON.stringify(data)
+    }).then(function (response) {
+        return response.json();
+    }).then(x => succeeded = x);
+    console.log(`succedeed: ${succeeded}`);
 }
 
 searchBar.addEventListener('keyup', function(event) {

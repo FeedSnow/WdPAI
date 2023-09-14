@@ -28,22 +28,7 @@
         </div>
 
         <section class="contacts">
-           <!-- < ?php foreach($contacts as $contact): ?>
-                <div class="contact-tile" id="contact-1">
-                    <img src="public/uploads/< ?= $contact->getImage(); ?>">
-                    <div class="contact-info">
-                        <h1>< ?= $contact->getName(); ?></h1>
-                        <div class="contact-details">
-                            <p id="number">< ?= substr_replace(
-                                    substr_replace(
-                                            $contact->getPhone(), '-', 6, 0),
-                                    '-', 3, 0); ?></p>
-                            <p id="email">< ?= $contact->getEmail(); ?></p>
-                            <p id="locality">< ?= $contact->getLocality(); ?></p>
-                        </div>
-                    </div>
-                </div>
-            < ?php endforeach; ?> -->
+
         </section>
     </main>
 

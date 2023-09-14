@@ -123,7 +123,6 @@ class OfferRepository extends Repository
         $stmt->bindParam(':quantity', $offer->getQuantity(), PDO::PARAM_INT);
         $stmt->bindParam(':author', $authorId, PDO::PARAM_INT);
         $stmt->bindParam(':date', $date->format('Y-m-d'), PDO::PARAM_STR);
-        //$stmt->bindParam(':active', 1, PDO::PARAM_BOOL);
 
         $stmt->execute();
     }

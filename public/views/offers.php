@@ -30,22 +30,6 @@
             </div>
 
             <section class="offers">
-                <!-- < ?php foreach($offers as $offer): ?>
-                    <div class="offer-tile" id="offer-1">
-                        <img src="public/uploads/< ?= $offer->getImage() ?>">
-                        <div class="offer-info">
-                            <div class="offer-main">
-                                <h2>< ?= $offer->getTitle() ?></h2>
-                                <p>< ?= $offer->getDescription() ?></p>
-                            </div>
-
-                            <div class="offer-footer">
-                                <h3>< ?= $offer->getPrice() > 0 ? (float)$offer->getPrice()/100 .'zł' : 'Za darmo' ?></h3>
-                                <i class="fa-solid fa-heart"></i>
-                            </div>
-                        </div>
-                    </div>
-                < ?php endforeach; ?> -->
 
             </section>
         </main>
@@ -69,9 +53,8 @@
             </div>
 
             <div class="offer-footer">
-                <p class="email">Email</p>
+                <p class="email" onclick="addContact(this)">Email</p>
                 <h3>0zł</h3>
-                <!-- <i class="fa-solid fa-heart"></i> -->
             </div>
         </div>
     </div>

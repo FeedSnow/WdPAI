@@ -40,21 +40,17 @@ function arePasswordsEqual(password, confirmedPassword)
 function validateEmail() {
     if(isEmpty(emailInput))
         return;
-    //setTimeout(function() {
-        markValidation(emailInput, isEmail(emailInput.value))
-    //}, 1000)
+
+    markValidation(emailInput, isEmail(emailInput.value))
 }
 
 function validatePassword() {
-    //setTimeout(function () {
     if(isEmpty(passwordInput))
         return;
     markValidation(passwordInput, isPasswordSafe(passwordInput.value))
-    //}, 100)
 }
 
 function validateConfirmedPassword() {
-    //setTimeout(function() {
         if(isEmpty(confirmedPasswordInput))
             return;
 
@@ -63,8 +59,6 @@ function validateConfirmedPassword() {
             confirmedPasswordInput.value
         );
         markValidation(confirmedPasswordInput, condition)
-    //}, 100)
-    //TODO po zmianie hasła powinien się zmieniać automatycznie status pola confirm-password
 }
 
 function validateForm() {
@@ -75,13 +69,7 @@ function validateForm() {
         valid = markValidation(surnameInput, !isEmpty(surnameInput)) && valid;
         valid = markValidation(confirmedPasswordInput, !isEmpty(confirmedPasswordInput)) && valid;
     }
-    /*if(markValidation(nameInput, !isEmpty(nameInput))
-        || markValidation(lastnameInput, !isEmpty(lastnameInput))
-        || markValidation(emailInput, !isEmpty(emailInput))
-        || markValidation(passwordInput, !isEmpty(passwordInput))
-        || markValidation(confirmedPasswordInput, !isEmpty(confirmedPasswordInput))
-        //|| form.querySelector('input[type="checkbox"]')
-        ) {*/
+
     if(!valid) {
         console.log('empty');
         return false;
@@ -93,9 +81,6 @@ function validateForm() {
         valid = markValidation(confirmedPasswordInput, arePasswordsEqual(passwordInput.value, confirmedPasswordInput.value)) && valid;
     }
 
-    /*if(!isEmail(emailInput.value)
-        || !isPasswordSafe(passwordInput.value)
-        || !arePasswordsEqual(passwordInput.value, confirmedPasswordInput.value)) {*/
     if(!valid) {
         console.log('bad value');
         return false;

@@ -30,13 +30,6 @@
                 </div>
                 <input name="email" type="text" placeholder="adres e-mail">
                 <input name="password" type="password" placeholder="hasło">
-                <!--
-                <label class="checkbox-container">Nie wylogowuj mnie
-                    <input name="dont-logout" type="checkbox">
-                    <span class="checkmark"></span>
-                </label>
--->
-                
 
                 <div class="buttons">
                     <button onclick="redirect('register')">Utwórz konto</button>
