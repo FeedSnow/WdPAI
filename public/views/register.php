@@ -5,6 +5,8 @@
     <link rel="stylesheet" type="text/css" href="public/css/button.css">
     <link rel="stylesheet" type="text/css" href="public/css/text-input.css">
     <link rel="stylesheet" type="text/css" href="public/css/registration-page.css">
+    <script type="text/javascript" src="./public/js/validation.js" defer></script>
+    <script type="text/javascript" src="./public/js/redirect.js" defer></script>
     <script type="text/javascript" src="./public/js/loginValidation.js" defer></script>
     <title>REGISTRATION PAGE</title>
 </head>
@@ -32,16 +34,16 @@
                 <input name="email" type="text" placeholder="adres e-mail">
                 <input name="password" type="password" placeholder="hasło">
                 <input name="confirm-password" type="password" placeholder="potwierdź hasło">
-
+<!--
                 <label class="checkbox-container">Akceptuję regulamin serwisu Seedlings
                     <input type="checkbox">
                     <span class="checkmark"></span>
                 </label>
-
+-->
                 
 
                 <div class="buttons">
-                    <button>Wróć</button>
+                    <button onclick="redirect('login')">Wróć</button>
                     <button type="submit">Utwórz konto</button>
                 </div>
             </form>

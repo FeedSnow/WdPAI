@@ -5,6 +5,8 @@
     <link rel="stylesheet" type="text/css" href="public/css/button.css">
     <link rel="stylesheet" type="text/css" href="public/css/text-input.css">
     <link rel="stylesheet" type="text/css" href="public/css/login-page.css">
+    <script type="text/javascript" src="./public/js/validation.js" defer></script>
+    <script type="text/javascript" src="./public/js/redirect.js" defer></script>
     <script type="text/javascript" src="./public/js/loginValidation.js" defer></script>
     <title>LOGIN PAGE</title>
 </head>
@@ -28,16 +30,16 @@
                 </div>
                 <input name="email" type="text" placeholder="adres e-mail">
                 <input name="password" type="password" placeholder="hasło">
-                
+                <!--
                 <label class="checkbox-container">Nie wylogowuj mnie
                     <input name="dont-logout" type="checkbox">
                     <span class="checkmark"></span>
                 </label>
-
+-->
                 
 
                 <div class="buttons">
-                    <button>Utwórz konto</button>
+                    <button onclick="redirect('register')">Utwórz konto</button>
                     <button type="submit">Zaloguj</button>
                 </div>
             </form>
