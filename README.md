@@ -39,3 +39,9 @@ Po kliknięciu na adres e-mail na kafelku oferty, użytkownik ją wystawiający 
 ### Wylogowywanie
 
 Podczas wylogowania dane użytkownika są usuwane z sesji, a on sam zostaje przekierowany do ekranu logowania.
+
+---
+
+## Użyte wzorce projektowe
+
+Singleton w klasach `Database` i `Repository`. 
