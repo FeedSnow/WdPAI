@@ -54,7 +54,7 @@ section {
 
     opacity: 87%;
 
-    margin: var(--size-unit) calc(var(--size-unit) * 2) var(--size-unit) 0;
+    margin: var(--size-unit) var(--size-unit) var(--size-unit) 0;
     
     display: flex;
     flex-direction: column;
@@ -108,6 +108,8 @@ section {
 
 .offer-tile h2 {
     font-size: var(--size-unit);
+    margin-bottom: 0.25em;
+    margin-top: 0.25em;
 }
 
 .offer-tile p {
@@ -117,4 +119,26 @@ section {
 
 .offer-tile h3 {
     font-size: calc(var(--size-unit) * 0.8);
+}
+
+.offer-top
+{
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+.offer-tile >  i:hover .fa-circle-minus {
+    color: #212121;
+}
+
+.offer-info > i:active .fa-circle-minus {
+    color: crimson;
+}
+
+.offer-tile > i .fa-circle-minus {
+    color: #121212;
+    font-size: calc(var(--size-unit) * 1.5);
+    -webkit-text-stroke-width: 1px;
+    -webkit-text-stroke-color: crimson;
 }

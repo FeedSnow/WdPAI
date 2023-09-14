@@ -58,7 +58,12 @@
         <img src="">
         <div class="offer-info">
             <div class="offer-main">
-                <h2>Title</h2>
+                <div class="offer-top">
+                    <h2>Title</h2>
+                    <button class="micro" id="delete-offer">
+                        <i class="fa-solid fa-circle-minus"></i>
+                    </button>
+                </div>
                 <p class="desc">Description</p>
             </div>
 

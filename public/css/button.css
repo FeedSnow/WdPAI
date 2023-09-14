@@ -57,7 +57,36 @@ button:active > i, button.active > i {
     -webkit-text-stroke-color: #121212;
 }
 
+button.micro {
+    background: none;
+    border: none;
+    width: 1em;
+    height: 1em;
+    padding: 0;
+    margin: 0;
+    font-size: 1em;
+}
 
+button.micro > i {
+    font-size: inherit;
+    margin: auto;
+    padding: 0;
+    -webkit-text-stroke-width: 1px;
+}
+
+button.micro:hover > .fa-circle-minus {
+    color: #212121;
+}
+
+button.micro:active > .fa-circle-minus {
+    color: crimson;
+}
+
+button.micro > .fa-circle-minus {
+    color: #121212;
+    -webkit-text-stroke-width: 2px;
+    -webkit-text-stroke-color: crimson;
+}
 
 button.short {
     background: none;
