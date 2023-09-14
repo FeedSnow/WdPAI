@@ -1,4 +1,4 @@
-input, textarea {
+input, textarea, select {
     background: rgba(255, 255, 255, 0.4);
     border-radius: 25px;
     border: 3px solid rgba(0,0,0,0);
@@ -24,11 +24,11 @@ input::placeholder, textarea::placeholder {
     color: rgba(255, 255, 255, 0.7);
 }
 
-input:hover, textarea:hover {
+input:hover, textarea:hover, select:hover {
     border: 3px solid rgba(255, 255, 255, 0.7);
 }
 
-input:focus, textarea:focus {
+input:focus, textarea:focus, select:focus {
     border: 3px solid #09B835;
 }/**/
 

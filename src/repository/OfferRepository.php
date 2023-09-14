@@ -100,7 +100,7 @@ class OfferRepository extends Repository
 
         $stmt = $this->database->connect(true)->prepare($sql);
 
-        $authorId = 1;
+        $authorId = $_SESSION['user']->getId();
 
         if($offer->getAddress() !== null) {
             $stmt->bindParam(':voivodeship', $offer->getAddress()->getVoivodeship(), PDO::PARAM_STR);

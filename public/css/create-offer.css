@@ -8,6 +8,11 @@
     background: linear-gradient(180deg, #008648 0%, #004C37 100%, #00693F 100%);
 }
 
+h3 {
+    font-size: 1.1em;
+    width: 10em;
+}
+
 main {
     height: 100vh;
     width: 82vw;
@@ -102,19 +107,8 @@ section {
 }
 
 .create-offer select {
-    background: rgba(255, 255, 255, 0.4);
-    border-radius: 25px;
-    border: 3px solid rgba(0, 0, 0, 0);
-    color: #FFFFFF;
-    font-family: inherit;
-
     width: calc(98% + 6px);
     height: calc(2.5em + 6px);
-    margin: 1em 0;
-    padding: 0 1em;
-
-    transition: 0.3s ease-in-out;
-    outline: none;
 }
 
 .create-offer select:focus {

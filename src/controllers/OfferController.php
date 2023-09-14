@@ -42,11 +42,11 @@ class OfferController extends AppController
             //echo $address !== null;
 
             $delivery = new Delivery(
-                (int)($_POST['cod-courier']*100),
-                (int)($_POST['cod-in-person']*100),
-                (int)($_POST['adv-courier']*100),
-                (int)($_POST['adv-in-person']*100),
-                (int)($_POST['adv-inpost']*100)
+                $_POST['cod-courier'] !== "" ? (int)($_POST['cod-courier']*100) : null,
+                $_POST['cod-in-person'] !== "" ? (int)($_POST['cod-in-person']*100) : null,
+                $_POST['adv-courier'] !== "" ? (int)($_POST['adv-courier']*100) : null,
+                $_POST['adv-in-person'] !== "" ? (int)($_POST['adv-in-person']*100) : null,
+                $_POST['adv-inpost'] !== "" ? (int)($_POST['adv-inpost']*100) : null
             );
 
             $offer = new Offer(
