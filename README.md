@@ -42,6 +42,8 @@ Podczas wylogowania dane użytkownika są usuwane z sesji, a on sam zostaje prze
 
 ---
 
-## Użyte wzorce projektowe
+## Informacje dodatkowe
 
-Singleton w klasach `Database` i `Repository`. 
+W katalogu głównym powinien znaleźć się plik `config.php` z danymi do połączenia z bazą danych.
+
+Użyto wzorca projektowego Singleton w klasach `Database` i `Repository`. 
