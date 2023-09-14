@@ -20,7 +20,7 @@
         </div>
 
         <div class="right">
-            <button class="short" id="messages">
+            <!--<button class="short" id="messages">
                 <i class="fa-solid fa-comments"></i>
             </button>
             <button class="short" id="notifications">
@@ -31,7 +31,7 @@
             </button>
             <button class="short" id="basket">
                 <i class="fa-solid fa-basket-shopping"></i>
-            </button>
+            </button>-->
             <button class="short" id="my-account">
                 <img src="public/uploads/<?=$_SESSION['user']->getImage()?>">
                 <!-- <i class="fa-solid fa-circle-user"></i> -->

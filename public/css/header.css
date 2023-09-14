@@ -42,7 +42,7 @@ header > .buttons > .right {
 
     display: flex;
     flex-direction: row;
-    justify-content: space-evenly;
+    justify-content: flex-end;
     align-items: center;
 }
 

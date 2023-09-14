@@ -20,20 +20,20 @@
                     <a>Kontakty</a>
                 </button>
             </li>
-            <li>
+            <!--<li>
                 <button id="history">
                     <i class="fa-solid fa-clock"></i>
                     <a>Historia zakupów</a>
                 </button>
-            </li>
+            </li>-->
         </div>
         <div class="lower">
-            <li>
+            <!--<li>
                 <button id="settings">
                     <i class="fa-solid fa-gear"></i>
                     <a>Ustawienia</a>
                 </button>
-            </li>
+            </li>-->
             <li>
                 <button id="logout" onclick="redirect('logout')">
                     <i class="fa-solid fa-right-from-bracket"></i>
